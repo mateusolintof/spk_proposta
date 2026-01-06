@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { AlertTriangle, Clock, TrendingDown, Users, Calendar, Receipt } from "lucide-react";
 import SlideShell from "@/components/ui/SlideShell";
-import GaugeChart from "@/components/ui/GaugeChart";
 
 export default function DiagnosticoSlide() {
   return (
@@ -201,35 +200,8 @@ export default function DiagnosticoSlide() {
               </div>
             </div>
 
-            {/* Right: Gauges + O que muda + Custo */}
+            {/* Right: O que muda + Custo */}
             <div className="space-y-4">
-              <div className="grid grid-cols-2 gap-4">
-                <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                  <GaugeChart
-                    value={25}
-                    max={100}
-                    label="Nível de Controle"
-                    sublabel="Hoje"
-                    color="amber"
-                  />
-                  <p className="mt-2 text-[11px] text-white/50 text-center">
-                    Sem fila, sem fallback e sem distribuição automática
-                  </p>
-                </div>
-                <div className="rounded-2xl border border-emerald-500/20 bg-emerald-500/10 p-4">
-                  <GaugeChart
-                    value={90}
-                    max={100}
-                    label="Nível de Controle"
-                    sublabel="Com a solução"
-                    color="emerald"
-                  />
-                  <p className="mt-2 text-[11px] text-white/60 text-center">
-                    Fila + regras + follow-up automático + visibilidade
-                  </p>
-                </div>
-              </div>
-
               <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
                 <p className="text-xs uppercase tracking-[0.2em] text-white/40 mb-3">
                   O que muda com o novo modelo
