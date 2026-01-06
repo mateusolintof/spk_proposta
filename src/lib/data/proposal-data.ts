@@ -18,6 +18,7 @@ import {
   Bot,
   Link2,
   LayoutDashboard,
+  DollarSign,
 } from "lucide-react";
 import type { AgentType } from "@/types/modal";
 
@@ -228,49 +229,49 @@ export interface FAQItem {
 
 export const faqItems: FAQItem[] = [
   {
-    iconName: "Zap",
-    question: "Como integra com o Fortix e WhatsApp API?",
+    iconName: "DollarSign",
+    question: "O que esta incluso no valor mensal de R$ 6.000?",
     answer:
-      "A integracao e feita via API e webhooks, sem substituir o sistema atual. O orquestrador funciona como uma camada acima do Fortix, recebendo os leads e distribuindo inteligentemente entre os vendedores. A comunicacao com o cliente continua pelo WhatsApp Business API, com governanca de limites e qualidade.",
-  },
-  {
-    iconName: "Shield",
-    question: "Como evitamos perda de numero/limite no WhatsApp?",
-    answer:
-      "A solucao inclui governanca de WhatsApp com: controle de volume de envio (nao ultrapassa limites da Meta), opt-out respeitado automaticamente, multiplos canais de fallback (SMS, e-mail), e templates aprovados. Tambem monitoramos a qualidade do numero e alertamos sobre riscos antes que virem problemas.",
-  },
-  {
-    iconName: "Lock",
-    question: "Como fica LGPD e auditoria?",
-    answer:
-      "A solucao e desenhada com boas praticas de privacidade: criptografia em transito e em repouso, controle de acesso por perfil, trilhas de auditoria completas e politicas de retencao configuraveis. No kick-off, alinhamos governanca de dados (exportacao, retencao, exclusao) conforme as politicas da Mercante.",
-  },
-  {
-    iconName: "HelpCircle",
-    question: "Quem aprova mensagens de cobranca?",
-    answer:
-      "A regua de cobranca tem human-in-loop configuravel. Mensagens padrao (lembretes, vencimento) sao automatizadas. Negociacoes de valor, parcelamentos especiais ou clientes sensiveis sao escalados automaticamente para o financeiro ou gestor aprovar antes de enviar.",
+      "O valor mensal inclui 100% dos custos operacionais: tokens de IA (Claude, OpenAI), banco de dados PostgreSQL e Redis, infraestrutura em nuvem, manutencao, atualizacoes de seguranca, melhorias continuas e suporte tecnico dedicado. Tambem esta incluso o custo da API Oficial da Meta para atendimento receptivo e vendas.",
   },
   {
     iconName: "MessageSquare",
-    question: "Preciso trocar o Fortix ou o sistema atual?",
+    question: "Como funciona o custo da API Oficial da Meta?",
     answer:
-      "Nao! O orquestrador funciona como uma camada acima do sistema atual. O Fortix continua sendo usado pela equipe, mas os leads sao distribuidos de forma inteligente pelo orquestrador, que tambem alimenta o CRM proprio com visibilidade de funil, SLA e metricas que talvez o Fortix nao ofereca hoje.",
+      "Para vendas e atendimento ao cliente (receptivo), o custo da API da Meta ja esta embutido no valor mensal. Porem, para campanhas de marketing, promocoes e disparos em massa, o custo da API e repassado separadamente conforme consumo (~R$ 0,30 a 0,50 por conversa). A solucao de cobranca tambem nao inclui o custo da API — este e cobrado a parte.",
+  },
+  {
+    iconName: "Receipt",
+    question: "O Agente de Cobranca tem custo de API separado?",
+    answer:
+      "Sim. O Agente de Cobranca (R$ 1.000/mes) nao inclui os custos da API Oficial da Meta. Como cobranca envolve envio proativo de mensagens, o custo da API e repassado conforme o volume de disparos. Isso garante transparencia e evita surpresas na fatura.",
+  },
+  {
+    iconName: "Code",
+    question: "Qual a stack tecnologica utilizada?",
+    answer:
+      "A solucao e construida com tecnologias modernas e escalaveis: Backend em Python com FastAPI, banco de dados PostgreSQL para persistencia e Redis para cache e filas, RAG (Retrieval-Augmented Generation) para consulta inteligente ao ERP, Claude API (Anthropic) como LLM principal, e frontend em React/TypeScript. Toda infraestrutura roda em nuvem com alta disponibilidade.",
+  },
+  {
+    iconName: "Shield",
+    question: "Como evitamos perda de numero no WhatsApp?",
+    answer:
+      "A solucao inclui governanca completa: controle de volume de envio (respeitando limites da Meta), opt-out automatico, templates pre-aprovados, e monitoramento de qualidade do numero. Alertamos sobre riscos antes que virem problemas. Por isso separamos campanhas de marketing — alto volume pode impactar a qualidade.",
   },
   {
     iconName: "Clock",
     question: "Qual o prazo de implementacao?",
     answer:
-      "Em geral, 4 a 8 semanas dependendo da complexidade das integracoes. Comecamos com um piloto (Fila + SDR) com 1-2 vendedores, expandimos gradualmente e depois adicionamos as outras frentes (eventos, cobranca, recompra). Os primeiros ganhos de SLA aparecem nas primeiras semanas.",
+      "Em geral, 4 a 8 semanas dependendo da complexidade das integracoes. Comecamos com um piloto com 1-2 vendedores para validar o fluxo, expandimos gradualmente para toda equipe, e depois ativamos as frentes adicionais (eventos, cobranca). Os primeiros resultados aparecem nas primeiras semanas.",
   },
 ];
 
 export const faqIcons = {
-  Zap,
-  Shield,
-  Lock,
-  HelpCircle,
+  DollarSign,
   MessageSquare,
+  Receipt,
+  Code,
+  Shield,
   Clock,
 };
 
@@ -289,25 +290,25 @@ export const phases: Phase[] = [
   {
     phase: 1,
     title: "Imersao",
-    desc: "Diagnostico de fila + dados + desenho de roteamento entre os 18 vendedores",
+    desc: "Diagnostico da operacao, mapeamento de integracoes com ERP e definicao de fluxos de atendimento",
     iconName: "Handshake",
   },
   {
     phase: 2,
     title: "Piloto",
-    desc: "Core (Fila + SDR) operando com 1-2 vendedores para validacao de fluxo",
+    desc: "Agente de Vendas + Inbox operando com 1-2 vendedores para validacao do fluxo e integracoes",
     iconName: "Code",
   },
   {
     phase: 3,
     title: "Rollout",
-    desc: "Expansao para toda equipe + integracoes (Fortix, eventos, cobranca)",
+    desc: "Expansao para toda equipe de vendas + ativacao dos agentes de Eventos e Cobranca",
     iconName: "CheckCircle",
   },
   {
     phase: 4,
     title: "Otimizacao",
-    desc: "Analise de metricas + ativacao de recompra e copiloto do vendedor",
+    desc: "Analise de metricas, ajustes de prompts e melhorias continuas baseadas em dados reais",
     iconName: "Rocket",
   },
 ];

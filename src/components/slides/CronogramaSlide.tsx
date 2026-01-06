@@ -9,25 +9,25 @@ const phases = [
   {
     phase: 1,
     title: "Imersão",
-    desc: "Diagnóstico de fila + dados + desenho de roteamento entre os 18 vendedores",
+    desc: "Diagnóstico da operação, mapeamento de integrações com ERP e definição de fluxos de atendimento",
     icon: <Handshake className="w-6 h-6" />,
   },
   {
     phase: 2,
     title: "Piloto",
-    desc: "Core (Fila + SDR) operando com 1-2 vendedores para validação de fluxo",
+    desc: "Agente de Vendas + Inbox operando com 1-2 vendedores para validação do fluxo e integrações",
     icon: <Code className="w-6 h-6" />,
   },
   {
     phase: 3,
     title: "Rollout",
-    desc: "Expansão para toda equipe + integrações (Fortix, eventos, cobrança)",
+    desc: "Expansão para toda equipe de vendas + ativação dos agentes de Eventos e Cobrança",
     icon: <CheckCircle className="w-6 h-6" />,
   },
   {
     phase: 4,
     title: "Otimização",
-    desc: "Análise de métricas + ativação de recompra e copiloto do vendedor",
+    desc: "Análise de métricas, ajustes de prompts e melhorias contínuas baseadas em dados reais",
     icon: <Rocket className="w-6 h-6" />,
   },
 ];

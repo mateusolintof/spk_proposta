@@ -10,6 +10,9 @@ import {
   HelpCircle,
   Lock,
   MessageSquare,
+  DollarSign,
+  Code,
+  Receipt,
 } from "lucide-react";
 import SlideShell from "@/components/ui/SlideShell";
 
@@ -21,41 +24,40 @@ interface FAQItem {
 
 const faqItems: FAQItem[] = [
   {
-    icon: <Zap className="w-5 h-5" />,
-    question:
-      "Como integra com o Fortix e WhatsApp API?",
+    icon: <DollarSign className="w-5 h-5" />,
+    question: "O que está incluso no valor mensal de R$ 6.000?",
     answer:
-      "A integração é feita via API e webhooks, sem substituir o sistema atual. O orquestrador funciona como uma camada acima do Fortix, recebendo os leads e distribuindo inteligentemente entre os vendedores. A comunicação com o cliente continua pelo WhatsApp Business API, com governança de limites e qualidade.",
-  },
-  {
-    icon: <Shield className="w-5 h-5" />,
-    question: "Como evitamos perda de número/limite no WhatsApp?",
-    answer:
-      "A solução inclui governança de WhatsApp com: controle de volume de envio (não ultrapassa limites da Meta), opt-out respeitado automaticamente, múltiplos canais de fallback (SMS, e-mail), e templates aprovados. Também monitoramos a qualidade do número e alertamos sobre riscos antes que virem problemas.",
-  },
-  {
-    icon: <Lock className="w-5 h-5" />,
-    question: "Como fica LGPD e auditoria?",
-    answer:
-      "A solução é desenhada com boas práticas de privacidade: criptografia em trânsito e em repouso, controle de acesso por perfil, trilhas de auditoria completas e políticas de retenção configuráveis. No kick-off, alinhamos governança de dados (exportação, retenção, exclusão) conforme as políticas da Mercante.",
-  },
-  {
-    icon: <HelpCircle className="w-5 h-5" />,
-    question: "Quem aprova mensagens de cobrança?",
-    answer:
-      "A régua de cobrança tem human-in-loop configurável. Mensagens padrão (lembretes, vencimento) são automatizadas. Negociações de valor, parcelamentos especiais ou clientes sensíveis são escalados automaticamente para o financeiro ou gestor aprovar antes de enviar.",
+      "O valor mensal inclui 100% dos custos operacionais: tokens de IA (Claude, OpenAI), banco de dados PostgreSQL e Redis, infraestrutura em nuvem, manutenção, atualizações de segurança, melhorias contínuas e suporte técnico dedicado. Também está incluso o custo da API Oficial da Meta para atendimento receptivo e vendas.",
   },
   {
     icon: <MessageSquare className="w-5 h-5" />,
-    question: "Preciso trocar o Fortix ou o sistema atual?",
+    question: "Como funciona o custo da API Oficial da Meta?",
     answer:
-      "Não! O orquestrador funciona como uma camada acima do sistema atual. O Fortix continua sendo usado pela equipe, mas os leads são distribuídos de forma inteligente pelo orquestrador, que também alimenta o CRM próprio com visibilidade de funil, SLA e métricas que talvez o Fortix não ofereça hoje.",
+      "Para vendas e atendimento ao cliente (receptivo), o custo da API da Meta já está embutido no valor mensal. Porém, para campanhas de marketing, promoções e disparos em massa, o custo da API é repassado separadamente conforme consumo (~R$ 0,30 a 0,50 por conversa). A solução de cobrança também não inclui o custo da API — este é cobrado à parte.",
+  },
+  {
+    icon: <Receipt className="w-5 h-5" />,
+    question: "O Agente de Cobrança tem custo de API separado?",
+    answer:
+      "Sim. O Agente de Cobrança (R$ 1.000/mês) não inclui os custos da API Oficial da Meta. Como cobrança envolve envio proativo de mensagens, o custo da API é repassado conforme o volume de disparos. Isso garante transparência e evita surpresas na fatura.",
+  },
+  {
+    icon: <Code className="w-5 h-5" />,
+    question: "Qual a stack tecnológica utilizada?",
+    answer:
+      "A solução é construída com tecnologias modernas e escaláveis: Backend em Python com FastAPI, banco de dados PostgreSQL para persistência e Redis para cache e filas, RAG (Retrieval-Augmented Generation) para consulta inteligente ao ERP, Claude API (Anthropic) como LLM principal, e frontend em React/TypeScript. Toda infraestrutura roda em nuvem com alta disponibilidade.",
+  },
+  {
+    icon: <Shield className="w-5 h-5" />,
+    question: "Como evitamos perda de número no WhatsApp?",
+    answer:
+      "A solução inclui governança completa: controle de volume de envio (respeitando limites da Meta), opt-out automático, templates pré-aprovados, e monitoramento de qualidade do número. Alertamos sobre riscos antes que virem problemas. Por isso separamos campanhas de marketing — alto volume pode impactar a qualidade.",
   },
   {
     icon: <Clock className="w-5 h-5" />,
     question: "Qual o prazo de implementação?",
     answer:
-      "Em geral, 4 a 8 semanas dependendo da complexidade das integrações. Começamos com um piloto (Fila + SDR) com 1-2 vendedores, expandimos gradualmente e depois adicionamos as outras frentes (eventos, cobrança, recompra). Os primeiros ganhos de SLA aparecem nas primeiras semanas.",
+      "Em geral, 4 a 8 semanas dependendo da complexidade das integrações. Começamos com um piloto com 1-2 vendedores para validar o fluxo, expandimos gradualmente para toda equipe, e depois ativamos as frentes adicionais (eventos, cobrança). Os primeiros resultados aparecem nas primeiras semanas.",
   },
 ];
 
@@ -71,7 +73,7 @@ export default function FAQSlide() {
       eyebrow="FAQ"
       eyebrowColor="default"
       title="Perguntas Frequentes"
-      subtitle="Dúvidas sobre integração, governança, LGPD e implementação."
+      subtitle="Custos, API da Meta, stack tecnológica e implementação."
       align="center"
       size="compact"
     >
