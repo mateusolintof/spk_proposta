@@ -1,6 +1,7 @@
 "use client";
 
 import SolucoesSection from "./sections/SolucoesSection";
+import ComparativoSection from "./sections/ComparativoSection";
 import ArquiteturaSection from "./sections/ArquiteturaSection";
 import InvestimentoSection from "./sections/InvestimentoSection";
 import CustosSection from "./sections/CustosSection";
@@ -45,6 +46,7 @@ export default function PropostaPage() {
       {/* Main Content */}
       <main className="max-w-5xl mx-auto px-6">
         <SolucoesSection />
+        <ComparativoSection />
         <ArquiteturaSection />
         <InvestimentoSection />
         <CustosSection />
