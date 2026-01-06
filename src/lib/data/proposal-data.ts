@@ -248,9 +248,9 @@ export const faqItems: FAQItem[] = [
   },
   {
     iconName: "Shield",
-    question: "Como evitamos perda de numero no WhatsApp?",
+    question: "Como garantem a seguranca e controle das respostas da IA?",
     answer:
-      "A solucao inclui governanca completa: controle de volume de envio (respeitando limites da Meta), opt-out automatico, templates pre-aprovados, e monitoramento de qualidade do numero. Alertamos sobre riscos antes que virem problemas. Por isso separamos campanhas de marketing — alto volume pode impactar a qualidade.",
+      "A solucao possui multiplas camadas de seguranca: Guardrails que limitam o escopo de atuacao do agente e bloqueiam respostas inadequadas; Human-in-the-loop para escalar automaticamente casos sensiveis ou fora do escopo para um atendente humano; Handoffs inteligentes que transferem a conversa mantendo todo o contexto; e logs completos para auditoria. O agente nunca toma decisoes criticas sozinho.",
   },
   {
     iconName: "Clock",

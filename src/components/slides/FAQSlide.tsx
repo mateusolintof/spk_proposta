@@ -39,9 +39,9 @@ const faqItems: FAQItem[] = [
   },
   {
     icon: <Shield className="w-5 h-5" />,
-    question: "Como evitamos perda de número no WhatsApp?",
+    question: "Como garantem a segurança e controle das respostas da IA?",
     answer:
-      "A solução inclui governança completa: controle de volume de envio (respeitando limites da Meta), opt-out automático, templates pré-aprovados, e monitoramento de qualidade do número. Alertamos sobre riscos antes que virem problemas. Por isso separamos campanhas de marketing — alto volume pode impactar a qualidade.",
+      "A solução possui múltiplas camadas de segurança: Guardrails que limitam o escopo de atuação do agente e bloqueiam respostas inadequadas; Human-in-the-loop para escalar automaticamente casos sensíveis ou fora do escopo para um atendente humano; Handoffs inteligentes que transferem a conversa mantendo todo o contexto; e logs completos para auditoria. O agente nunca toma decisões críticas sozinho.",
   },
   {
     icon: <Clock className="w-5 h-5" />,
