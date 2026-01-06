@@ -48,7 +48,7 @@ export default function IntroSlide({ onEnter }: IntroSlideProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.8 }}
         >
-          Orquestração Inteligente de Atendimento Comercial
+          Atendimento Comercial com Controle de Fila e Mais Conversões
         </motion.h1>
 
         {/* Subtitle */}
@@ -58,8 +58,9 @@ export default function IntroSlide({ onEnter }: IntroSlideProps) {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.7 }}
         >
-          Fila inteligente, agentes especializados e governança para televendas,
-          eventos e cobrança. CRM + Dashboard executivo integrados.
+          Organizamos a fila do WhatsApp, distribuímos atendimentos com regras
+          claras e automatizamos follow-ups para transformar volume em pedidos
+          — sem deixar lead parado.
         </motion.p>
 
         {/* Tagline */}

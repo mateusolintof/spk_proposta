@@ -5,10 +5,7 @@ import {
   Bot,
   Link2,
   LayoutDashboard,
-  GraduationCap,
   Check,
-  Sparkles,
-  MessageCircle,
 } from "lucide-react";
 import SlideShell from "@/components/ui/SlideShell";
 
@@ -22,92 +19,84 @@ type Plan = {
   featured?: boolean;
 };
 
-// 5 frentes de agentes
-const agentPlans: Plan[] = [
+// 2 agentes principais (linha de cima - cards maiores)
+const mainAgents: Plan[] = [
   {
-    name: "Fila + SDR",
-    subtitle: "Orquestrador de atendimento com qualificação 24/7",
-    setup: "Sob consulta",
-    monthly: "Sob consulta",
+    name: "Agente Atendimento",
+    subtitle: "Orquestrador inteligente com qualificação 24/7",
+    setup: "R$ 20.000,00",
+    monthly: "R$ 5.000,00",
     bullets: [
-      "Fila inteligente com rotação automática",
-      "SLA controlado (< 3 min)",
-      "Qualificação e handoff com contexto",
+      "Distribuição inteligente entre vendedores",
+      "Qualificação automática de leads",
+      "Handoff com contexto completo",
+      "Atendimento fora do horário comercial",
     ],
     badge: "Core",
     featured: true,
   },
   {
-    name: "Closer Assist",
-    subtitle: "Copiloto do vendedor para fechamento",
-    setup: "Sob consulta",
-    monthly: "Sob consulta",
-    bullets: [
-      "Contexto e histórico do cliente",
-      "Sugestões de abordagem",
-      "Alertas de oportunidade (cross/up-sell)",
-    ],
-  },
-  {
     name: "Agente Eventos",
-    subtitle: "Follow-up automatizado para feiras e eventos",
-    setup: "Sob consulta",
-    monthly: "Sob consulta",
+    subtitle: "Confirmação de presença e dados para feiras e eventos",
+    setup: "R$ 8.000,00",
+    monthly: "R$ 1.000,00",
     bullets: [
-      "Follow-up em 24h (não 30 dias)",
-      "Cadência automatizada",
-      "Métricas de ROI por evento",
-    ],
-  },
-  {
-    name: "Agente Cobrança",
-    subtitle: "Régua de cobrança com governança WhatsApp",
-    setup: "Sob consulta",
-    monthly: "Sob consulta",
-    bullets: [
-      "Régua pré e pós-vencimento",
-      "Governança e limites WhatsApp",
-      "Human-in-loop para negociações",
-    ],
-  },
-  {
-    name: "Recompra & Copiloto",
-    subtitle: "Reativação de clientes + assistente interno",
-    setup: "Sob consulta",
-    monthly: "Sob consulta",
-    bullets: [
-      "Campanhas de reativação",
-      "Resumo de histórico para vendedor",
-      "Alertas de risco de churn",
+      "Múltiplas tentativas de contato (mensagem + ligação)",
+      "Confirmação de presença no evento",
+      "Validação e atualização de dados cadastrais",
+      "Métricas de confirmação e ROI por evento",
     ],
   },
 ];
 
-const fullPlan: Plan = {
-  name: "Pacote Completo",
-  subtitle: "Todas as 5 frentes + CRM, Dashboard e integrações",
-  setup: "Sob consulta",
-  monthly: "Sob consulta",
-  bullets: [
-    "Orquestrador + 5 agentes especializados",
-    "CRM + Dashboard executivo",
-    "Integrações (Fortix, WhatsApp API, ERP)",
-    "Governança WhatsApp incluída",
-  ],
-  badge: "Recomendado",
-  featured: true,
-};
+// 3 agentes complementares (linha de baixo)
+const additionalAgents: Plan[] = [
+  {
+    name: "Agente Cobrança",
+    subtitle: "Régua de cobrança com governança WhatsApp",
+    setup: "R$ 8.000,00",
+    monthly: "R$ 1.000,00",
+    bullets: [
+      "Régua pré e pós-vencimento",
+      "Governança e limites WhatsApp",
+      "Múltiplos canais de contato",
+      "Human-in-loop para negociações",
+    ],
+  },
+  {
+    name: "Agente Follow-Up e Recompra",
+    subtitle: "Reativação de clientes e cadência de recompra",
+    setup: "R$ 8.000,00",
+    monthly: "R$ 1.000,00",
+    bullets: [
+      "Identificação de clientes inativos",
+      "Cadência automatizada de recompra",
+      "Ofertas personalizadas por histórico",
+      "Métricas de reativação e LTV",
+    ],
+  },
+  {
+    name: "Agente Copiloto + POP",
+    subtitle: "Assistente de bolso para vendedores e sistema de disparo POP",
+    setup: "Sob consulta",
+    monthly: "Sob consulta",
+    bullets: [
+      "Assistente para dúvidas de produto",
+      "Consulta de estoque e preços",
+      "Disparo de promoções (POP)",
+      "Sugestões de venda cruzada",
+    ],
+  },
+];
 
 const deliverables = [
   {
     icon: <Bot className="w-6 h-6" />,
-    title: "5 Frentes de Agentes",
+    title: "5 Agentes Especializados",
     items: [
-      "Fila + SDR (Qualificação)",
-      "Closer Assist (Vendedor)",
-      "Eventos (Follow-up)",
-      "Cobrança (Régua)",
-      "Recompra & Copiloto",
+      "Atendimento, Evento, Cobrança",
+      "Follow-Up e Recompra",
+      "Copiloto + POP",
     ],
   },
   {
@@ -117,25 +106,15 @@ const deliverables = [
       "Fortix (sistema atual)",
       "WhatsApp Business API",
       "ERP e base de dados",
-      "Notificações em tempo real",
     ],
   },
   {
     icon: <LayoutDashboard className="w-6 h-6" />,
     title: "CRM & Dashboard",
     items: [
-      "Visão de funil e SLA",
+      "Visão de funil e métricas",
       "Distribuição por vendedor",
       "KPIs de eventos e cobrança",
-    ],
-  },
-  {
-    icon: <GraduationCap className="w-6 h-6" />,
-    title: "Treinamento & Suporte",
-    items: [
-      "Suporte contínuo",
-      "30 dias de acompanhamento",
-      "Ajustes e otimizações",
     ],
   },
 ];
@@ -212,19 +191,20 @@ export default function InvestimentoSlide() {
       eyebrow="Investimento"
       eyebrowColor="success"
       title="Investimento"
-      subtitle="Valores sob consulta — personalizados após diagnóstico"
+      subtitle="Escolha modular de agentes especializados"
       align="center"
       background={
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#00FF94]/5 via-transparent to-transparent pointer-events-none" />
       }
     >
       <div className="w-full space-y-6">
+        {/* 2 agentes principais (em cima) */}
         <div className="space-y-3">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <div className="flex items-center gap-3">
               <div className="w-1.5 h-6 bg-[#00E5FF] rounded-full" />
               <h3 className="text-lg font-semibold text-white">
-                Frentes de Agentes
+                Agentes Principais
               </h3>
             </div>
             <p className="text-xs text-white/40 uppercase tracking-[0.2em]">
@@ -232,83 +212,33 @@ export default function InvestimentoSlide() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3">
-            {agentPlans.map((plan, index) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {mainAgents.map((plan, index) => (
               <PlanCard key={plan.name} plan={plan} index={index} />
             ))}
           </div>
         </div>
 
-        <motion.div
-          className="relative rounded-2xl border border-[#00FF94]/40 bg-white/5 p-5"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
-        >
-          <div className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-[#00FF94]/60 via-[#00E5FF]/60 to-[#00FF94]/60" />
-
-          <div className="flex flex-wrap items-center gap-3 mb-3">
-            <span className="inline-flex items-center gap-1 rounded-full bg-[#00FF94] px-3 py-1 text-xs font-semibold text-black">
-              <Sparkles className="w-3 h-3" />
-              {fullPlan.badge}
-            </span>
-            <p className="text-[11px] uppercase tracking-[0.2em] text-white/40">
-              Pacote completo
+        {/* 3 agentes complementares (em baixo) */}
+        <div className="space-y-3">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <div className="flex items-center gap-3">
+              <div className="w-1.5 h-6 bg-[#00FF94] rounded-full" />
+              <h3 className="text-lg font-semibold text-white">
+                Agentes Complementares
+              </h3>
+            </div>
+            <p className="text-xs text-white/40 uppercase tracking-[0.2em]">
+              Expansão modular
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-5 items-start">
-            <div className="space-y-3">
-              <h3 className="text-xl font-semibold text-white">
-                {fullPlan.name}
-              </h3>
-              <p className="text-white/60 text-body leading-relaxed">
-                {fullPlan.subtitle}
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-2">
-                {fullPlan.bullets.map((item) => (
-                  <div
-                    key={item}
-                    className="flex items-start gap-2 text-white/70 text-body"
-                  >
-                    <Check className="w-4 h-4 text-[#00FF94] mt-0.5 flex-shrink-0" />
-                    <span>{item}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="space-y-3">
-              <div className="rounded-xl border border-white/10 bg-black/30 p-4 text-center">
-                <p className="text-[11px] uppercase tracking-[0.2em] text-white/40 mb-1">
-                  Setup
-                </p>
-                <span className="text-2xl font-semibold text-white">
-                  {fullPlan.setup}
-                </span>
-              </div>
-
-              <div className="rounded-xl border border-[#00FF94]/30 bg-[#00FF94]/10 p-4 text-center">
-                <p className="text-[11px] uppercase tracking-[0.2em] text-white/40 mb-1">
-                  Mensalidade
-                </p>
-                <span className="text-2xl font-semibold text-[#00FF94]">
-                  {fullPlan.monthly}
-                </span>
-              </div>
-
-              <div className="rounded-xl border border-[#00E5FF]/30 bg-[#00E5FF]/10 px-4 py-3 text-center">
-                <div className="flex items-center justify-center gap-2">
-                  <MessageCircle className="w-4 h-4 text-[#00E5FF]" />
-                  <p className="text-[#00E5FF] text-body font-semibold">
-                    Solicite proposta personalizada
-                  </p>
-                </div>
-              </div>
-            </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {additionalAgents.map((plan, index) => (
+              <PlanCard key={plan.name} plan={plan} index={index + 2} />
+            ))}
           </div>
-        </motion.div>
+        </div>
 
         <div className="pt-2">
           <div className="flex items-center gap-3 mb-3">
@@ -318,7 +248,7 @@ export default function InvestimentoSlide() {
             </h3>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 w-full">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
             {deliverables.map((item, index) => (
               <motion.div
                 key={item.title}

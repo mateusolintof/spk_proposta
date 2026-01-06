@@ -159,97 +159,100 @@ export default function DiagnosticoSlide() {
 
         <div className="space-y-4">
           <div className="flex items-center gap-3">
-            <span className="text-xs uppercase tracking-[0.3em] text-emerald-300/80">
+            <span className="text-xs uppercase tracking-[0.3em] text-amber-300/70">
               02
             </span>
             <h3 className="text-lg font-semibold text-white">
-              Projeção com Orquestração Inteligente
+              O que está quebrando o processo (e fazendo receita escapar)
             </h3>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-6">
+            {/* Left: 3 Problem Cards */}
             <div className="space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="rounded-2xl border border-amber-500/20 bg-amber-500/5 p-5">
+                <p className="text-amber-300 text-body font-semibold mb-2">
+                  Lead trava por falta de fallback
+                </p>
+                <p className="text-white/60 text-body">
+                  Quando o cliente escolhe um vendedor e ele não responde,
+                  a conversa fica "congelada" — e a oportunidade esfria.
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-amber-500/20 bg-amber-500/5 p-5">
+                <p className="text-amber-300 text-body font-semibold mb-2">
+                  Distribuição desigual = gargalo + ociosidade
+                </p>
+                <p className="text-white/60 text-body">
+                  Alguns vendedores ficam sobrecarregados enquanto outros ficam
+                  subutilizados. Resultado: perde-se venda onde era para ganhar velocidade.
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-amber-500/20 bg-amber-500/5 p-5">
+                <p className="text-amber-300 text-body font-semibold mb-2">
+                  Sem regras, não existe previsibilidade
+                </p>
+                <p className="text-white/60 text-body">
+                  Sem prioridade, sem fila e sem cadência, a performance vira
+                  "sorte do atendimento" — não um processo controlável.
+                </p>
+              </div>
+            </div>
+
+            {/* Right: Gauges + O que muda + Custo */}
+            <div className="space-y-4">
+              <div className="grid grid-cols-2 gap-4">
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
                   <GaugeChart
                     value={25}
                     max={100}
-                    label="SLA Atual"
-                    sublabel="Sem controle"
+                    label="Nível de Controle"
+                    sublabel="Hoje"
                     color="amber"
                   />
-                  <p className="mt-2 text-xs text-white/50">
-                    Tempo de resposta indefinido, depende do vendedor.
+                  <p className="mt-2 text-[11px] text-white/50 text-center">
+                    Sem fila, sem fallback e sem distribuição automática
                   </p>
                 </div>
                 <div className="rounded-2xl border border-emerald-500/20 bg-emerald-500/10 p-4">
                   <GaugeChart
                     value={90}
                     max={100}
-                    label="SLA com IA"
-                    sublabel="< 3 min"
+                    label="Nível de Controle"
+                    sublabel="Com a solução"
                     color="emerald"
                   />
-                  <p className="mt-2 text-xs text-white/60">
-                    Fila inteligente + agente SDR garante resposta imediata.
+                  <p className="mt-2 text-[11px] text-white/60 text-center">
+                    Fila + regras + follow-up automático + visibilidade
                   </p>
                 </div>
               </div>
 
               <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-                <p className="text-xs uppercase tracking-[0.2em] text-white/40">
-                  O que muda com orquestração
+                <p className="text-xs uppercase tracking-[0.2em] text-white/40 mb-3">
+                  O que muda com o novo modelo
                 </p>
-                <ul className="mt-3 space-y-2 text-body text-white/60">
-                  <li>Lead nunca fica preso — rotação automática em 5 min</li>
-                  <li>Distribuição equilibrada entre os 18 vendedores</li>
-                  <li>Eventos: follow-up em 24h, não 30 dias</li>
+                <ul className="space-y-2 text-body text-white/60">
+                  <li className="flex items-start gap-2">
+                    <span className="text-emerald-400 mt-1">•</span>
+                    <span><strong className="text-white/80">Nenhum lead fica parado:</strong> se não houver resposta, o sistema encaminha para o próximo disponível</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-emerald-400 mt-1">•</span>
+                    <span><strong className="text-white/80">Distribuição equilibrada:</strong> o volume deixa de concentrar em poucos vendedores</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-emerald-400 mt-1">•</span>
+                    <span><strong className="text-white/80">Follow-up automático:</strong> eventos e recompra deixam de depender de esforço manual</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-emerald-400 mt-1">•</span>
+                    <span><strong className="text-white/80">Gestão do funil:</strong> dá para enxergar onde travou, quem está sobrecarregado e o que está virando pedido</span>
+                  </li>
                 </ul>
               </div>
-            </div>
-
-            <div className="space-y-4">
-              <motion.div
-                className="bg-emerald-500/10 border border-emerald-500/30 rounded-2xl p-5 flex items-center justify-between"
-                initial={{ opacity: 0, scale: 0.96 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-              >
-                <div>
-                  <p className="text-emerald-400 font-bold text-3xl">&lt;3 min</p>
-                  <p className="text-white/60 text-body">
-                    SLA de primeira resposta
-                  </p>
-                </div>
-                <div className="text-right">
-                  <p className="text-white/40 text-xs">Meta com orquestração</p>
-                  <p className="text-emerald-400 text-body font-medium">
-                    100% dos leads
-                  </p>
-                </div>
-              </motion.div>
-
-              <motion.div
-                className="bg-emerald-500/10 border border-emerald-500/30 rounded-2xl p-5 flex items-center justify-between"
-                initial={{ opacity: 0, scale: 0.96 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.25 }}
-              >
-                <div>
-                  <p className="text-emerald-400 font-bold text-3xl">24h</p>
-                  <p className="text-white/60 text-body">
-                    Follow-up de eventos
-                  </p>
-                </div>
-                <div className="text-right">
-                  <p className="text-white/40 text-xs">Vs. 30 dias atual</p>
-                  <p className="text-emerald-400 text-body font-medium">
-                    30x mais rápido
-                  </p>
-                </div>
-              </motion.div>
 
               <motion.div
                 className="bg-red-500/10 border border-red-500/20 rounded-2xl p-5"
@@ -258,13 +261,23 @@ export default function DiagnosticoSlide() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 }}
               >
-                <p className="text-red-400 text-xs uppercase tracking-wider mb-1">
-                  Custo de não agir
+                <p className="text-red-400 text-xs uppercase tracking-wider font-semibold mb-2">
+                  CUSTO DE NÃO AGIR
                 </p>
-                <p className="text-white/70 text-body">
-                  Sem orquestração: leads presos, eventos desperdiçados,
-                  cobrança arriscada e vendedores sobrecarregados.
-                </p>
+                <ul className="space-y-1.5 text-body text-white/70">
+                  <li className="flex items-start gap-2">
+                    <span className="text-red-400 mt-1">•</span>
+                    <span>Leads ficam presos e esfriam sem resposta</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-red-400 mt-1">•</span>
+                    <span>Follow-ups demoram semanas (eventos e recompra viram lista fria)</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-red-400 mt-1">•</span>
+                    <span>Cobrança em alto volume desgasta o canal e reduz capacidade de contato</span>
+                  </li>
+                </ul>
               </motion.div>
             </div>
           </div>
@@ -283,7 +296,7 @@ export default function DiagnosticoSlide() {
             <strong className="text-[#00FF94]">
               A fila inteligente + agentes especializados
             </strong>{" "}
-            eliminam o problema de lead preso, garantem SLA e protegem a operação de cobrança.
+            eliminam o problema de lead preso, garantem controle operacional e protegem a operação de cobrança.
           </p>
         </motion.div>
       </div>

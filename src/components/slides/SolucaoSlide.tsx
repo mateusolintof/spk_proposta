@@ -2,35 +2,27 @@
 
 import { motion } from "framer-motion";
 import {
-  GitBranch,
-  Handshake,
+  Headphones,
   Calendar,
   Receipt,
-  RefreshCw,
   BrainCircuit,
 } from "lucide-react";
 import SlideShell from "@/components/ui/SlideShell";
 import type { ModalKind, AgentType } from "@/types/modal";
 
-const ORBIT_RADIUS = "clamp(110px, 16vw, 180px)";
-const AGENT_ANGLES = [0, 72, 144, 216, 288]; // 5 agentes em 360°
+const ORBIT_RADIUS = "clamp(120px, 18vw, 200px)";
+const AGENT_ANGLES = [0, 120, 240]; // 3 agentes em 360°
 
 const agents: { id: AgentType; name: string; icon: React.ReactNode; color: string }[] = [
   {
-    id: "fila_sdr",
-    name: "Fila + SDR",
-    icon: <GitBranch className="w-5 h-5" />,
+    id: "atendimento",
+    name: "Agente Atendimento",
+    icon: <Headphones className="w-5 h-5" />,
     color: "#00E5FF",
   },
   {
-    id: "closer",
-    name: "Closer Assist",
-    icon: <Handshake className="w-5 h-5" />,
-    color: "#00FF94",
-  },
-  {
-    id: "eventos",
-    name: "Agente Eventos",
+    id: "evento",
+    name: "Agente Evento",
     icon: <Calendar className="w-5 h-5" />,
     color: "#FFD700",
   },
@@ -40,16 +32,10 @@ const agents: { id: AgentType; name: string; icon: React.ReactNode; color: strin
     icon: <Receipt className="w-5 h-5" />,
     color: "#FF6B6B",
   },
-  {
-    id: "recompra_copiloto",
-    name: "Recompra & Copiloto",
-    icon: <RefreshCw className="w-5 h-5" />,
-    color: "#A855F7",
-  },
 ];
 
 const features = [
-  { title: "Fila Inteligente & Roteamento", desc: "Distribuição equilibrada entre 18 vendedores com SLA controlado e rotação automática" },
+  { title: "Distribuição Inteligente", desc: "Distribuição equilibrada entre 18 vendedores com qualificação automática e rotação dinâmica" },
   { title: "Governança WhatsApp", desc: "Limites de envio, opt-out respeitado e múltiplos canais para evitar perda de número" },
   { title: "Integrações", desc: "Fortix, ERP e base de conhecimento integrados com handoff inteligente para humanos" },
 ];
@@ -64,7 +50,7 @@ export default function SolucaoSlide({ onOpenModal }: SolucaoSlideProps) {
       eyebrow="Solução"
       eyebrowColor="success"
       title="Arquitetura da Solução"
-      subtitle="5 Frentes de Agentes + Orquestração Inteligente"
+      subtitle="3 Agentes Especializados + Orquestração Inteligente"
       align="center"
       size="compact"
       background={

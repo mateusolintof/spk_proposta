@@ -3,26 +3,20 @@
 import { motion } from "framer-motion";
 import {
   Bot,
-  GitBranch,
   Clock,
   Users,
   MessageSquare,
   Target,
   Handshake,
-  Lightbulb,
-  TrendingUp,
-  Zap,
   Calendar,
   Send,
-  CheckCircle,
   Receipt,
   Shield,
   Phone,
   Bell,
-  RefreshCw,
   Search,
   BarChart3,
-  UserCheck,
+  Headphones,
 } from "lucide-react";
 import { AgentType } from "@/types/modal";
 
@@ -49,29 +43,29 @@ interface AgentCapabilities {
 }
 
 const capabilitiesByAgent: Record<AgentType, AgentCapabilities> = {
-  fila_sdr: {
-    centerTitle: "Fila + SDR",
+  atendimento: {
+    centerTitle: "Agente Atendimento",
     centerSubtitle: "Orquestração 24h",
-    summary: "Distribui, qualifica e direciona com SLA garantido.",
+    summary: "Distribui, qualifica e direciona leads automaticamente.",
     groups: [
       {
-        id: "entrada",
-        title: "Roteamento",
-        subtitle: "Distribui entre vendedores",
+        id: "distribuicao",
+        title: "Distribuição",
+        subtitle: "Roteia entre vendedores",
         items: [
           {
-            id: "fila",
-            title: "Fila Inteligente",
-            subtitle: "Rotação automática",
-            icon: GitBranch,
-            items: ["Balanceamento de carga", "Fallback se não atender"],
+            id: "inteligente",
+            title: "Distribuição Inteligente",
+            subtitle: "Baseada em carga",
+            icon: Headphones,
+            items: ["Balanceamento automático", "Fallback se não atender"],
           },
           {
-            id: "sla",
-            title: "SLA Controlado",
-            subtitle: "Tempo de resposta",
+            id: "tempo",
+            title: "Tempo de Resposta",
+            subtitle: "Monitoramento ativo",
             icon: Clock,
-            items: ["Alerta em 2 min", "Reatribui em 5 min"],
+            items: ["Alerta em 2 min", "Reatribui automaticamente"],
           },
         ],
       },
@@ -119,78 +113,8 @@ const capabilitiesByAgent: Record<AgentType, AgentCapabilities> = {
       },
     ],
   },
-  closer: {
-    centerTitle: "Closer Assist",
-    centerSubtitle: "Copiloto do Vendedor",
-    summary: "Contexto, sugestões e alertas para fechar mais.",
-    groups: [
-      {
-        id: "contexto",
-        title: "Contexto",
-        subtitle: "Informação na hora certa",
-        items: [
-          {
-            id: "historico",
-            title: "Histórico Completo",
-            subtitle: "Compras e interações",
-            icon: Search,
-            items: ["Últimos pedidos", "Produtos preferidos"],
-          },
-          {
-            id: "perfil",
-            title: "Perfil do Cliente",
-            subtitle: "Dados consolidados",
-            icon: UserCheck,
-            items: ["Ticket médio", "Frequência de compra"],
-          },
-        ],
-      },
-      {
-        id: "sugestoes",
-        title: "Sugestões",
-        subtitle: "Recomendações inteligentes",
-        items: [
-          {
-            id: "abordagem",
-            title: "Abordagem",
-            subtitle: "Como abordar o cliente",
-            icon: Lightbulb,
-            items: ["Baseada no histórico", "Objeções comuns"],
-          },
-          {
-            id: "oportunidades",
-            title: "Oportunidades",
-            subtitle: "Cross e up-sell",
-            icon: TrendingUp,
-            items: ["Produtos relacionados", "Promoções ativas"],
-          },
-        ],
-      },
-      {
-        id: "acoes",
-        title: "Ações",
-        subtitle: "Next best action",
-        items: [
-          {
-            id: "proximo",
-            title: "Próximo Passo",
-            subtitle: "O que fazer agora",
-            icon: Zap,
-            items: ["Ação recomendada", "Prazo sugerido"],
-          },
-          {
-            id: "handoff",
-            title: "Escala Humana",
-            subtitle: "Quando envolver gestor",
-            icon: Handshake,
-            items: ["Negociações especiais", "Clientes VIP"],
-          },
-        ],
-      },
-    ],
-  },
-  eventos: {
-    centerTitle: "Agente Eventos",
+  evento: {
+    centerTitle: "Agente Evento",
     centerSubtitle: "Follow-up de Feiras",
     summary: "Contato em 24h, cadência e agendamento automático.",
     groups: [
@@ -324,76 +248,6 @@ const capabilitiesByAgent: Record<AgentType, AgentCapabilities> = {
             subtitle: "Parcelamento guiado",
             icon: Handshake,
             items: ["Opções de pagamento", "Registro no sistema"],
-          },
-        ],
-      },
-    ],
-  },
-  recompra_copiloto: {
-    centerTitle: "Recompra & Copiloto",
-    centerSubtitle: "Reativação + Assistente",
-    summary: "Recupera clientes inativos e apoia o vendedor.",
-    groups: [
-      {
-        id: "reativacao",
-        title: "Reativação",
-        subtitle: "Clientes inativos",
-        items: [
-          {
-            id: "identificacao",
-            title: "Identificação",
-            subtitle: "Quem parou de comprar",
-            icon: Search,
-            items: ["Sem pedido há 60 dias", "Ticket médio alto"],
-          },
-          {
-            id: "campanha",
-            title: "Campanha",
-            subtitle: "Contato personalizado",
-            icon: RefreshCw,
-            items: ["Oferta exclusiva", "Baseada no histórico"],
-          },
-        ],
-      },
-      {
-        id: "copiloto",
-        title: "Copiloto",
-        subtitle: "Assistente do vendedor",
-        items: [
-          {
-            id: "resumo",
-            title: "Resumo Rápido",
-            subtitle: "Contexto em 30s",
-            icon: Lightbulb,
-            items: ["Últimas compras", "Preferências"],
-          },
-          {
-            id: "recomendacoes",
-            title: "Recomendações",
-            subtitle: "O que oferecer",
-            icon: TrendingUp,
-            items: ["Baseado em compras", "Produtos novos"],
-          },
-        ],
-      },
-      {
-        id: "alertas",
-        title: "Alertas",
-        subtitle: "Proatividade",
-        items: [
-          {
-            id: "churn",
-            title: "Risco de Churn",
-            subtitle: "Cliente pode sair",
-            icon: Bell,
-            items: ["Frequência caindo", "Concorrente ativo"],
-          },
-          {
-            id: "oportunidade",
-            title: "Oportunidade",
-            subtitle: "Momento de vender",
-            icon: CheckCircle,
-            items: ["Reposição estimada", "Lançamento relevante"],
           },
         ],
       },

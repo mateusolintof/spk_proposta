@@ -3,11 +3,9 @@
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import {
-  GitBranch,
-  Handshake,
+  Headphones,
   Calendar,
   Receipt,
-  RefreshCw,
   CheckCircle,
 } from "lucide-react";
 import ModalWrapper from "./ModalWrapper";
@@ -44,39 +42,24 @@ const agentData: Record<
     benefits: string[];
   }
 > = {
-  fila_sdr: {
-    name: "Fila Inteligente + SDR",
-    fullName: "Orquestrador de Atendimento com Qualificação 24/7",
+  atendimento: {
+    name: "Agente Atendimento",
+    fullName: "Orquestrador Inteligente com Qualificação 24/7",
     description:
-      "Router inteligente que distribui leads entre os 18 vendedores com base em disponibilidade, carga e especialidade. Inclui agente SDR que qualifica, coleta dados essenciais e faz handoff com contexto completo.",
-    icon: <GitBranch className="w-6 h-6" />,
+      "Distribui leads entre os 18 vendedores com base em disponibilidade e carga. Qualifica automaticamente, coleta dados essenciais e faz handoff com contexto completo — inclusive fora do horário comercial.",
+    icon: <Headphones className="w-6 h-6" />,
     color: "#00E5FF",
     benefits: [
-      "Rotação automática - Lead nunca fica preso em vendedor ocupado",
-      "SLA controlado - Primeira resposta em menos de 3 minutos",
-      "Qualificação 24/7 - Atende fora do horário comercial e finais de semana",
+      "Distribuição inteligente - Lead vai para o vendedor certo, na hora certa",
+      "Qualificação automática - Coleta nome, empresa, interesse antes do handoff",
+      "Atendimento 24/7 - Responde fora do horário comercial e finais de semana",
       "Balanceamento de carga - Distribuição equilibrada entre os 18 vendedores",
-      "Handoff com contexto - Vendedor recebe histórico e intenção do lead",
+      "Handoff com contexto - Vendedor recebe histórico completo da conversa",
     ],
   },
-  closer: {
-    name: "Closer Assist",
-    fullName: "Assistente de Fechamento para Vendedores",
-    description:
-      "Copiloto interno que apoia o vendedor durante a negociação. Traz contexto do cliente, sugere abordagens baseadas no histórico e alerta sobre oportunidades de cross-sell e up-sell.",
-    icon: <Handshake className="w-6 h-6" />,
-    color: "#00FF94",
-    benefits: [
-      "Contexto instantâneo - Histórico de compras e interações na tela",
-      "Sugestões de abordagem - Baseadas no perfil e comportamento do cliente",
-      "Alertas de oportunidade - Cross-sell e up-sell identificados automaticamente",
-      "Resumo de objeções - Principais dúvidas e como responder",
-      "Next best action - Próximo passo recomendado para cada lead",
-    ],
-  },
-  eventos: {
-    name: "Agente Eventos",
-    fullName: "Follow-up e Cadência para Leads de Feiras/Eventos",
+  evento: {
+    name: "Agente Evento",
+    fullName: "Follow-up Automatizado para Feiras e Eventos",
     description:
       "Especializado em converter leads capturados em eventos presenciais. Faz follow-up em 24h (não 30 dias), atualiza dados cadastrais e mantém cadência automatizada até o agendamento.",
     icon: <Calendar className="w-6 h-6" />,
@@ -102,21 +85,6 @@ const agentData: Record<
       "Múltiplos canais - WhatsApp, SMS, e-mail conforme preferência do cliente",
       "Human-in-loop - Escala para humano em negociações ou valores altos",
       "Dashboard de inadimplência - Visão de aging, recovery e motivos",
-    ],
-  },
-  recompra_copiloto: {
-    name: "Recompra & Copiloto",
-    fullName: "Reativação de Clientes + Assistente Interno do Vendedor",
-    description:
-      "Combina campanhas de recompra para clientes inativos com um copiloto interno que ajuda o vendedor com contexto, histórico e recomendações personalizadas.",
-    icon: <RefreshCw className="w-6 h-6" />,
-    color: "#A855F7",
-    benefits: [
-      "Campanhas de reativação - Identificação e contato de clientes inativos",
-      "Segmentação inteligente - Por último pedido, ticket, categoria de produto",
-      "Resumo de histórico - Tudo que o vendedor precisa saber em 30 segundos",
-      "Próximos passos sugeridos - Recomendações baseadas em comportamento",
-      "Alertas de risco de churn - Clientes que podem estar migrando",
     ],
   },
 };
