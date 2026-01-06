@@ -10,6 +10,12 @@ import {
   ShoppingCart,
   Calendar,
   Receipt,
+  CheckCircle,
+  AlertCircle,
+  Cpu,
+  Database,
+  Server,
+  Wrench,
 } from "lucide-react";
 import SlideShell from "@/components/ui/SlideShell";
 
@@ -303,6 +309,60 @@ export default function InvestimentoSlide() {
             ))}
           </div>
         </div>
+
+        {/* Transparência de Custos */}
+        <motion.div
+          className="rounded-2xl border border-[#00FF94]/30 bg-[#00FF94]/5 p-4"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* Incluso */}
+            <div>
+              <div className="flex items-center gap-2 mb-3">
+                <CheckCircle className="w-4 h-4 text-[#00FF94]" />
+                <p className="text-xs uppercase tracking-wider text-[#00FF94] font-semibold">
+                  Incluso no valor mensal
+                </p>
+              </div>
+              <div className="grid grid-cols-2 gap-2">
+                {[
+                  { icon: Cpu, text: "Tokens de IA" },
+                  { icon: Database, text: "Banco de Dados" },
+                  { icon: Server, text: "Infraestrutura" },
+                  { icon: Wrench, text: "Manutenção + Suporte" },
+                ].map((item, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center gap-2 bg-black/20 rounded-lg p-2"
+                  >
+                    <item.icon className="w-3.5 h-3.5 text-[#00FF94]" />
+                    <span className="text-xs text-white/70">{item.text}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Custo Adicional */}
+            <div>
+              <div className="flex items-center gap-2 mb-3">
+                <AlertCircle className="w-4 h-4 text-[#FFD700]" />
+                <p className="text-xs uppercase tracking-wider text-[#FFD700] font-semibold">
+                  Custo adicional do cliente
+                </p>
+              </div>
+              <div className="bg-[#FFD700]/5 border border-[#FFD700]/20 rounded-lg p-3">
+                <p className="text-sm font-medium text-white">
+                  API Oficial da Meta
+                </p>
+                <p className="text-xs text-white/50 mt-1">
+                  ~R$ 0,30 - 0,50 por conversa • Pay-per-use • Faturamento direto
+                </p>
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </SlideShell>
   );
