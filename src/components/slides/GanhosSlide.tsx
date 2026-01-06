@@ -4,14 +4,13 @@ import { motion } from "framer-motion";
 import {
   Zap,
   CalendarCheck,
-  TrendingUp,
   Users,
   Calculator,
   DollarSign,
   Clock,
   ArrowRight,
   BarChart3,
-  Shield,
+  TrendingUp,
 } from "lucide-react";
 import SlideShell from "@/components/ui/SlideShell";
 import type { ModalKind } from "@/types/modal";
@@ -36,34 +35,7 @@ const highlights = [
     label: "Follow-up Eventos",
     value: "24h",
     desc: "vs 30 dias atual",
-    color: "#FFD700",
-  },
-];
-
-const gains = [
-  {
-    icon: <Zap className="w-6 h-6" />,
-    title: "SLA Controlado",
-    desc: "Lead nunca fica preso. Fila inteligente com rotação automática se vendedor não responder em 5 minutos. Primeira resposta em menos de 3 minutos.",
-    color: "cyan",
-  },
-  {
-    icon: <Users className="w-6 h-6" />,
-    title: "Distribuição Equilibrada",
-    desc: "Fim do vendedor sobrecarregado. Balanceamento de carga inteligente entre os 18 vendedores, com fallback e priorização por disponibilidade.",
-    color: "green",
-  },
-  {
-    icon: <CalendarCheck className="w-6 h-6" />,
-    title: "Eventos Convertidos",
-    desc: "Follow-up em 24h (não 30 dias). Cadência automatizada para leads de feiras e eventos presenciais com ~1000 leads por evento.",
-    color: "cyan",
-  },
-  {
-    icon: <Shield className="w-6 h-6" />,
-    title: "Cobrança Segura",
-    desc: "Governança WhatsApp para evitar perda de número. Múltiplos canais, limites de envio respeitados e human-in-loop para negociações.",
-    color: "green",
+    color: "#00FF94",
   },
 ];
 
@@ -177,38 +149,6 @@ export default function GanhosSlide({ onOpenModal }: GanhosSlideProps) {
               </p>
               <p className="text-white/70 text-body mt-1">{item.label}</p>
               <p className="text-white/40 text-xs">{item.desc}</p>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Gains Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 w-full">
-          {gains.map((gain, index) => (
-            <motion.div
-              key={gain.title}
-              className="bg-white/5 border border-white/10 rounded-xl p-4 flex items-start gap-3 text-left"
-              initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.7 + index * 0.08 }}
-            >
-              <div
-                className={`p-2 rounded-lg ${
-                  gain.color === "cyan"
-                    ? "bg-[#00E5FF]/10 text-[#00E5FF]"
-                    : "bg-[#00FF94]/10 text-[#00FF94]"
-                }`}
-              >
-                {gain.icon}
-              </div>
-              <div>
-                <h3 className="text-base font-semibold text-white">
-                  {gain.title}
-                </h3>
-                <p className="text-white/50 mt-1 text-body leading-relaxed">
-                  {gain.desc}
-                </p>
-              </div>
             </motion.div>
           ))}
         </div>

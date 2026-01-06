@@ -144,7 +144,7 @@ export default function FAQSlide() {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="mt-8 text-center"
+        className="mt-6 text-center"
       >
         <p className="text-white/40 text-body">
           Ainda tem dúvidas?{" "}

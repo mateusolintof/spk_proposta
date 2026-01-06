@@ -53,7 +53,7 @@ export default function DiagnosticoSlide() {
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <div className="rounded-lg bg-white/5 p-2 text-red-400">
+                    <div className="rounded-lg bg-white/5 p-2 text-amber-300">
                       <Clock className="h-4 w-4" />
                     </div>
                     <div>
@@ -99,7 +99,7 @@ export default function DiagnosticoSlide() {
                 </p>
                 <div className="mt-4 space-y-3">
                   <div className="flex items-start gap-3">
-                    <div className="rounded-lg bg-red-500/10 p-2 text-red-400">
+                    <div className="rounded-lg bg-amber-500/10 p-2 text-amber-400">
                       <TrendingDown className="h-4 w-4" />
                     </div>
                     <div>
@@ -125,7 +125,7 @@ export default function DiagnosticoSlide() {
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <div className="rounded-lg bg-red-500/10 p-2 text-red-400">
+                    <div className="rounded-lg bg-amber-500/10 p-2 text-amber-400">
                       <Receipt className="h-4 w-4" />
                     </div>
                     <div>
@@ -231,21 +231,21 @@ export default function DiagnosticoSlide() {
               </motion.div>
 
               <motion.div
-                className="bg-cyan-500/10 border border-cyan-500/30 rounded-2xl p-5 flex items-center justify-between"
+                className="bg-emerald-500/10 border border-emerald-500/30 rounded-2xl p-5 flex items-center justify-between"
                 initial={{ opacity: 0, scale: 0.96 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.25 }}
               >
                 <div>
-                  <p className="text-cyan-400 font-bold text-3xl">24h</p>
+                  <p className="text-emerald-400 font-bold text-3xl">24h</p>
                   <p className="text-white/60 text-body">
                     Follow-up de eventos
                   </p>
                 </div>
                 <div className="text-right">
                   <p className="text-white/40 text-xs">Vs. 30 dias atual</p>
-                  <p className="text-cyan-400 text-body font-medium">
+                  <p className="text-emerald-400 text-body font-medium">
                     30x mais rápido
                   </p>
                 </div>
@@ -280,7 +280,7 @@ export default function DiagnosticoSlide() {
           <p className="text-white/80 text-body leading-relaxed">
             <strong className="text-[#00FF94]">Diagnóstico:</strong> o gargalo
             é falta de orquestração e governança.{" "}
-            <strong className="text-[#00E5FF]">
+            <strong className="text-[#00FF94]">
               A fila inteligente + agentes especializados
             </strong>{" "}
             eliminam o problema de lead preso, garantem SLA e protegem a operação de cobrança.
