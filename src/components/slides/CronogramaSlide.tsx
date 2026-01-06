@@ -79,21 +79,6 @@ export default function CronogramaSlide() {
         </div>
       </div>
 
-      {/* CTA */}
-      <motion.div
-        className="mt-10 text-center"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.6 }}
-      >
-        <p className="text-white/60 mb-4">Pronto para orquestrar o atendimento da Mercante?</p>
-        <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#00E5FF] to-[#00FF94] rounded-full text-[#02040A] font-semibold">
-          <span>Vamos começar</span>
-          <Rocket className="w-4 h-4" />
-        </div>
-      </motion.div>
-
       {/* Agency signature */}
       <motion.div
         className="mt-10 flex flex-col items-center gap-2"
