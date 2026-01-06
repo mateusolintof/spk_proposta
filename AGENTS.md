@@ -59,13 +59,13 @@ npm start -p 3001       # Servir build final
 
 ```
 src/components/slides/
-├── IntroSlide.tsx           # Hero "Orquestracao Inteligente de Atendimento Comercial"
-├── DiagnosticoSlide.tsx     # 18 vendedores, gargalos de fila, SLA
+├── IntroSlide.tsx           # Hero "Atendimento Comercial com Controle de Fila e Mais Conversoes"
+├── DiagnosticoSlide.tsx     # 18 vendedores, gargalos de fila, controle operacional
 ├── ObjetivoProjetoSlide.tsx # Objetivos Mercante e diferenciais
-├── SolucaoSlide.tsx         # 5 agentes IA orbitais (abre AgentModal)
+├── SolucaoSlide.tsx         # 3 agentes IA orbitais (abre AgentModal)
 ├── FerramentasSlide.tsx     # CRM + Dashboard (abre modais de preview)
-├── GanhosSlide.tsx          # SLA <3min, distribuicao, eventos 24h
-├── InvestimentoSlide.tsx    # 5 frentes + pacote completo (sob consulta)
+├── GanhosSlide.tsx          # Controle de fila, distribuicao, eventos
+├── InvestimentoSlide.tsx    # 5 agentes com precos definidos
 ├── FAQSlide.tsx             # 6 perguntas sobre Fortix, WhatsApp, LGPD
 └── CronogramaSlide.tsx      # 4 fases: Imersao, Piloto, Rollout, Otimizacao
 ```
@@ -90,7 +90,7 @@ interface SlideShellProps {
 #### Tipos (`src/types/modal.ts`)
 
 ```typescript
-export type AgentType = "fila_sdr" | "closer" | "eventos" | "cobranca" | "recompra_copiloto";
+export type AgentType = "atendimento" | "evento" | "cobranca";
 
 export type ModalKind =
   | { type: "agent"; agent: AgentType }
@@ -107,10 +107,10 @@ export type ModalKind =
 
 | Modal | Arquivo | Aberto por | Descricao |
 |-------|---------|------------|-----------|
-| AgentModal | `AgentModal.tsx` | SolucaoSlide | Detalhes dos 5 agentes IA |
+| AgentModal | `AgentModal.tsx` | SolucaoSlide | Detalhes dos 3 agentes core |
 | CRMPreviewModal | `CRMPreviewModal.tsx` | FerramentasSlide | Preview interativo do CRM |
 | DashboardPreviewModal | `DashboardPreviewModal.tsx` | FerramentasSlide | Preview do Dashboard |
-| ROICalculatorModal | `ROICalculatorModal.tsx` | GanhosSlide | Simulador de impacto (SLA) |
+| ROICalculatorModal | `ROICalculatorModal.tsx` | GanhosSlide | Simulador de impacto (taxa de resposta) |
 | CostReductionModal | `CostReductionModal.tsx` | GanhosSlide | Ganho de capacidade por vendedor |
 | GainsModal | `GainsModal.tsx` | GanhosSlide | KPIs operacionais Mercante |
 | IntelligenceModal | `IntelligenceModal.tsx` | GanhosSlide | Inteligencia de dados (canais, abandono) |
@@ -121,8 +121,8 @@ export type ModalKind =
 src/components/modals/
 ├── ModalWrapper.tsx              # Base wrapper com overlay e animacoes
 ├── agents/
-│   ├── RadialCapabilityDiagram.tsx  # Infografico em etapas por agente (5 agentes)
-│   └── AgentFlowDiagram.tsx         # Fluxograma interativo (XYFlow, 5 agentes)
+│   ├── RadialCapabilityDiagram.tsx  # Infografico em etapas por agente (3 agentes)
+│   └── AgentFlowDiagram.tsx         # Fluxograma interativo (XYFlow, 3 agentes)
 ├── crm/
 │   ├── CRMDashboardView.tsx      # Visao geral do CRM
 │   ├── CRMContactsView.tsx       # Lista de contatos/leads
@@ -135,15 +135,22 @@ src/components/modals/
     └── DashInsightsView.tsx      # Insights e recomendacoes
 ```
 
-### Agentes IA (5 frentes)
+### Agentes IA
 
-| ID | Nome | Funcao | Cor |
-|----|------|--------|-----|
-| fila_sdr | Fila + SDR | Router de atendimento com qualificacao 24/7 | Cyan (#00E5FF) |
-| closer | Closer Assist | Copiloto do vendedor para fechamento | Verde (#00FF94) |
-| eventos | Agente Eventos | Follow-up automatizado para feiras/eventos | Ouro (#FFD700) |
-| cobranca | Agente Cobranca | Regua de cobranca com governanca WhatsApp | Vermelho (#FF6B6B) |
-| recompra_copiloto | Recompra & Copiloto | Reativacao de clientes + assistente interno | Roxo (#A855F7) |
+#### Agentes Principais (2 - com modal detalhado)
+
+| ID | Nome | Funcao | Setup | Mensal |
+|----|------|--------|-------|--------|
+| atendimento | Agente Atendimento | Orquestrador com qualificacao 24/7 | R$ 25.000 | R$ 5.000 |
+| evento | Agente Eventos | Confirmacao de presenca para feiras/eventos | R$ 8.000 | R$ 1.500 |
+
+#### Agentes Complementares (3 - no InvestimentoSlide)
+
+| Nome | Funcao | Setup | Mensal |
+|------|--------|-------|--------|
+| Agente Cobranca | Regua de cobranca com governanca WhatsApp | R$ 8.000 | R$ 1.000 |
+| Agente Follow-Up e Recompra | Reativacao de clientes e cadencia de recompra | R$ 8.000 | R$ 1.000 |
+| Agente Copiloto + POP | Assistente de bolso + sistema de disparo POP | Sob consulta | Sob consulta |
 
 Cada agente no AgentModal exibe:
 - Infografico em etapas (Entrada → Processamento → Acao)
@@ -160,11 +167,9 @@ Cada agente no AgentModal exibe:
 --accent-success: #00FF94  /* Verde sucesso */
 
 /* Cores dos agentes */
---fila-sdr: #00E5FF        /* Cyan */
---closer: #00FF94          /* Verde */
+--atendimento: #00E5FF     /* Cyan */
 --eventos: #FFD700         /* Ouro */
 --cobranca: #FF6B6B        /* Vermelho */
---recompra: #A855F7        /* Roxo */
 
 /* Opacidades padrao */
 bg-white/5                 /* Cards e containers */
@@ -239,20 +244,34 @@ const [activeView, setActiveView] = useState<ViewType>("dashboard");
 </button>
 ```
 
+## Calculadoras/Simuladores
+
+### ROICalculatorModal (Simulador de Impacto)
+
+- **Taxa de resposta rapida (%):** % de leads que recebem resposta a tempo
+- **Multiplicador:** 1.35x (35% de melhoria)
+- **Taxa de conversao:** 8% (conservador)
+- **Teto:** 75%
+
+### CostReductionModal (Ganho de Capacidade)
+
+- **Multiplicador de capacidade:** 0.5x (25% de ganho)
+- Calcula horas liberadas e capacidade adicional por vendedor
+
 ## Checklist do Projeto
 
 - [x] 9 slides criados e funcionando
 - [x] Background 3D integrado
 - [x] Navegacao horizontal com snap
 - [x] 7 modais interativos
-- [x] AgentModal com 5 agentes Mercante
+- [x] AgentModal com 3 agentes core
 - [x] Infografico em etapas e fluxograma por agente
 - [x] CRM Preview com 4 abas
 - [x] Dashboard Preview com 4 abas
-- [x] Simulador de impacto (SLA e capacidade)
+- [x] Simulador de impacto (taxa de resposta e capacidade)
 - [x] GainsModal e IntelligenceModal com metricas Mercante
 - [x] FAQSlide com perguntas sobre Fortix/WhatsApp/LGPD
-- [x] Investimento com valores "sob consulta"
+- [x] Investimento com 5 agentes e precos definidos
 - [x] Animacoes Framer Motion
 - [x] Responsivo mobile/desktop
 - [x] Paleta de cores aplicada
@@ -261,10 +280,10 @@ const [activeView, setActiveView] = useState<ViewType>("dashboard");
 
 Ver `public/docs/CONTEUDO.md` para detalhes sobre:
 
-1. **Diagnostico:** 18 vendedores, gargalos de fila, SLA sem controle
-2. **Solucoes:** 5 frentes de agentes especializados
+1. **Diagnostico:** 18 vendedores, gargalos de fila, controle operacional
+2. **Solucoes:** 5 agentes especializados (3 core + 2 complementares)
 3. **Ferramentas:** CRM + Dashboard executivo com integracao Fortix
-4. **Metricas:** SLA <3min, distribuicao equilibrada, recovery de eventos
-5. **Investimento:** valores "sob consulta" (personalizados apos diagnostico)
+4. **Metricas:** Taxa de resposta, distribuicao equilibrada, recovery de eventos
+5. **Investimento:** Precos definidos por agente
 6. **Cronograma:** 4 fases (Imersao, Piloto, Rollout, Otimizacao)
 7. **Governanca WhatsApp:** controle de limites, qualidade, opt-out
