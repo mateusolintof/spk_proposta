@@ -3,9 +3,11 @@
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import {
-  MessageSquare,
-  CalendarCheck,
-  Star,
+  GitBranch,
+  Handshake,
+  Calendar,
+  Receipt,
+  RefreshCw,
   CheckCircle,
 } from "lucide-react";
 import ModalWrapper from "./ModalWrapper";
@@ -42,49 +44,79 @@ const agentData: Record<
     benefits: string[];
   }
 > = {
-  sdr: {
-    name: "SDR & Qualificação",
-    fullName: "Agente de Qualificação",
+  fila_sdr: {
+    name: "Fila Inteligente + SDR",
+    fullName: "Orquestrador de Atendimento com Qualificação 24/7",
     description:
-      "Agente de IA que qualifica e classifica leads, coleta dados essenciais (leitura de fatura via OCR), realiza cálculos de economia e direciona para vendedor humano com registro automático no CRM.",
-    icon: <MessageSquare className="w-6 h-6" />,
+      "Router inteligente que distribui leads entre os 18 vendedores com base em disponibilidade, carga e especialidade. Inclui agente SDR que qualifica, coleta dados essenciais e faz handoff com contexto completo.",
+    icon: <GitBranch className="w-6 h-6" />,
+    color: "#00E5FF",
+    benefits: [
+      "Rotação automática - Lead nunca fica preso em vendedor ocupado",
+      "SLA controlado - Primeira resposta em menos de 3 minutos",
+      "Qualificação 24/7 - Atende fora do horário comercial e finais de semana",
+      "Balanceamento de carga - Distribuição equilibrada entre os 18 vendedores",
+      "Handoff com contexto - Vendedor recebe histórico e intenção do lead",
+    ],
+  },
+  closer: {
+    name: "Closer Assist",
+    fullName: "Assistente de Fechamento para Vendedores",
+    description:
+      "Copiloto interno que apoia o vendedor durante a negociação. Traz contexto do cliente, sugere abordagens baseadas no histórico e alerta sobre oportunidades de cross-sell e up-sell.",
+    icon: <Handshake className="w-6 h-6" />,
     color: "#00FF94",
     benefits: [
-      "Atendimento 24/7 - Nunca mais perca leads fora do horário comercial",
-      "Qualificação automática - Identifica intenção, perfil e urgência comercial",
-      "Leitura de faturas (OCR) - Valida consumo mínimo de R$ 250 automaticamente",
-      "Orçamento/simulação guiada - Cálculos de economia em tempo real",
-      "Redução de tempo do time com triagem e tarefas repetitivas",
+      "Contexto instantâneo - Histórico de compras e interações na tela",
+      "Sugestões de abordagem - Baseadas no perfil e comportamento do cliente",
+      "Alertas de oportunidade - Cross-sell e up-sell identificados automaticamente",
+      "Resumo de objeções - Principais dúvidas e como responder",
+      "Next best action - Próximo passo recomendado para cada lead",
     ],
   },
-  noshow: {
-    name: "Follow-up Automático",
-    fullName: "Agente de Recuperação e Cadência",
+  eventos: {
+    name: "Agente Eventos",
+    fullName: "Follow-up e Cadência para Leads de Feiras/Eventos",
     description:
-      "Sistema inteligente que retoma conversas abandonadas, recupera orçamentos pendentes e mantém cadência automatizada para aumentar a taxa de conversão.",
-    icon: <CalendarCheck className="w-6 h-6" />,
-    color: "#FF6B6B",
-    benefits: [
-      "Recuperação de orçamentos - Retoma leads que receberam proposta mas não responderam",
-      "Cadência inteligente - Sequência de mensagens no timing certo sem parecer spam",
-      "Objeções e dúvidas - Identifica motivos de hesitação e oferece esclarecimentos",
-      "Handoff para vendedor - Escala para humano quando detecta interesse real",
-      "Métricas de recuperação - Taxa de reativação e motivos de perda",
-    ],
-  },
-  nps: {
-    name: "Pós-vendas & NPS",
-    fullName: "Agente de Relacionamento e Fidelização",
-    description:
-      "Cuida do cliente após a venda: envia lembretes de pagamento, campanhas de indicação, pesquisas de satisfação e mantém o relacionamento ativo.",
-    icon: <Star className="w-6 h-6" />,
+      "Especializado em converter leads capturados em eventos presenciais. Faz follow-up em 24h (não 30 dias), atualiza dados cadastrais e mantém cadência automatizada até o agendamento.",
+    icon: <Calendar className="w-6 h-6" />,
     color: "#FFD700",
     benefits: [
-      "Cobranças e lembretes - Avisos automáticos de vencimento e status de pagamento",
-      "Campanhas de indicação - 'Indique 5 pessoas e ganhe 10% off na próxima fatura'",
-      "Pesquisa NPS - Coleta feedback e direciona promotores para avaliação no Google",
-      "Comunicação proativa - Informativos sobre economia gerada e status da instalação",
-      "Suporte pós-venda - FAQ de cliente ativo e agendamento de visita técnica",
+      "Follow-up em 24h - Contato imediato pós-evento, não semanas depois",
+      "Cadência automatizada - Sequência de 3-5 toques otimizada",
+      "Atualização de dados - Coleta informações que faltaram no evento",
+      "Agendamento inteligente - Sugere horários e agenda visita/call",
+      "Métricas por evento - ROI e conversão de cada feira/ação",
+    ],
+  },
+  cobranca: {
+    name: "Agente Cobrança",
+    fullName: "Régua de Cobrança com Governança WhatsApp",
+    description:
+      "Automatiza cobrança de inadimplentes com régua inteligente, múltiplos canais e governança para evitar perda de número. Human-in-loop para negociações sensíveis.",
+    icon: <Receipt className="w-6 h-6" />,
+    color: "#FF6B6B",
+    benefits: [
+      "Régua inteligente - Sequência de lembretes pré-vencimento e pós-vencimento",
+      "Governança WhatsApp - Limites de envio, opt-out e qualidade controlados",
+      "Múltiplos canais - WhatsApp, SMS, e-mail conforme preferência do cliente",
+      "Human-in-loop - Escala para humano em negociações ou valores altos",
+      "Dashboard de inadimplência - Visão de aging, recovery e motivos",
+    ],
+  },
+  recompra_copiloto: {
+    name: "Recompra & Copiloto",
+    fullName: "Reativação de Clientes + Assistente Interno do Vendedor",
+    description:
+      "Combina campanhas de recompra para clientes inativos com um copiloto interno que ajuda o vendedor com contexto, histórico e recomendações personalizadas.",
+    icon: <RefreshCw className="w-6 h-6" />,
+    color: "#A855F7",
+    benefits: [
+      "Campanhas de reativação - Identificação e contato de clientes inativos",
+      "Segmentação inteligente - Por último pedido, ticket, categoria de produto",
+      "Resumo de histórico - Tudo que o vendedor precisa saber em 30 segundos",
+      "Próximos passos sugeridos - Recomendações baseadas em comportamento",
+      "Alertas de risco de churn - Clientes que podem estar migrando",
     ],
   },
 };
@@ -144,7 +176,7 @@ export default function AgentModal({ agent, isOpen, onClose }: AgentModalProps) 
               <p className="text-white/50 text-sm">
                 Este agente está incluído no{" "}
                 <span className="text-[#00FF94] font-semibold">
-                  Ecossistema Full
+                  Pacote Completo
                 </span>
               </p>
             </div>

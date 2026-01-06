@@ -17,25 +17,25 @@ interface IntelligenceModalProps {
 }
 
 const channelData = [
-  { key: "whatsapp", label: "WhatsApp", value: 42 },
-  { key: "instagram", label: "Instagram", value: 26 },
-  { key: "google", label: "Google", value: 20 },
-  { key: "indicacao", label: "Indicação", value: 12 },
+  { key: "whatsapp", label: "WhatsApp", value: 48 },
+  { key: "fortix", label: "Fortix/Site", value: 28 },
+  { key: "eventos", label: "Eventos/Feiras", value: 16 },
+  { key: "indicacao", label: "Indicação", value: 8 },
 ] as { key: string; label: string; value: number }[];
 
 const channelChartConfig = {
   whatsapp: { label: "WhatsApp", color: "#00E5FF" },
-  instagram: { label: "Instagram", color: "#1a5a6a" },
-  google: { label: "Google", color: "#2a7a8a" },
+  fortix: { label: "Fortix/Site", color: "#1a5a6a" },
+  eventos: { label: "Eventos/Feiras", color: "#FFD700" },
   indicacao: { label: "Indicação", color: "#7ad4e8" },
 } satisfies ChartConfig;
 
 const abandonReasonData = [
-  { label: "Sem resposta", value: 32 },
-  { label: "Preço", value: 24 },
-  { label: "Frete/prazo", value: 18 },
-  { label: "Cadastro pendente", value: 14 },
-  { label: "Outros", value: 12 },
+  { label: "Sem resposta a tempo", value: 35 },
+  { label: "Vendedor ocupado", value: 22 },
+  { label: "Preço/condições", value: 18 },
+  { label: "Frete/prazo", value: 15 },
+  { label: "Outros", value: 10 },
 ] as { label: string; value: number }[];
 
 const abandonChartConfig = {
@@ -63,12 +63,12 @@ export default function IntelligenceModal({
       isOpen={isOpen}
       onClose={onClose}
       title="Inteligência de Dados"
-      subtitle="Visão unificada de conversas e funil"
+      subtitle="Visão unificada da operação de televendas"
     >
       <div className="space-y-6">
         <div className="text-body text-white/70">
-          Em vez de &quot;olhar no achismo&quot;, a solução transforma conversas e funil
-          em uma visão única: origem, intenção, etapa, motivo de perda e próxima ação.
+          Transforme conversas e funil em visão única: origem do lead, qual vendedor
+          atende, tempo de resposta, motivo de perda e onde está o gargalo.
         </div>
 
         {/* Feature Cards Row */}
@@ -77,17 +77,17 @@ export default function IntelligenceModal({
             {
               icon: <Sparkles className="h-5 w-5" />,
               title: "Classificação automática",
-              desc: "Canal, intenção, perfil e tipo de cliente — sem digitação manual.",
+              desc: "Canal de origem, vendedor responsável, etapa do funil — sem digitação manual.",
             },
             {
               icon: <Link2 className="h-5 w-5" />,
-              title: "Conciliação com pedidos",
-              desc: "Sabe quem comprou, cancelou, ficou pendente ou respondeu — com rastreio por origem.",
+              title: "Integração Fortix",
+              desc: "Sincronização com sistema atual. Leads, status e histórico sem retrabalho.",
             },
             {
               icon: <BarChart3 className="h-5 w-5" />,
-              title: "Insights acionáveis",
-              desc: "Relatórios e recomendações para agir no mesmo dia, não no fim do mês.",
+              title: "SLA e distribuição",
+              desc: "Quem está sobrecarregado, quem está ocioso, onde estão os gargalos.",
             },
           ].map((item) => (
             <div
@@ -225,24 +225,23 @@ export default function IntelligenceModal({
             </div>
             <div className="mt-3 space-y-2">
               <Bullet>
-                Quais canais trazem clientes que compram (e não só volume)?
+                Qual vendedor está sobrecarregado? Qual está ocioso?
               </Bullet>
               <Bullet>
-                Em que etapa do funil estamos perdendo mais e por que?
+                Quantos leads perdemos por falta de resposta em tempo?
               </Bullet>
               <Bullet>
-                Quais etapas/produtos geram mais abandono ou cancelamento?
+                Qual o SLA médio de primeira resposta por vendedor?
               </Bullet>
               <Bullet>
-                Qual mensagem/objeção mais trava o fechamento e qual resposta
-                converte melhor?
+                Eventos: quantos leads do último evento viraram pedido?
               </Bullet>
             </div>
           </div>
 
         <div className="text-xs text-white/40">
-          Dados e exemplos são ilustrativos para demo comercial. Ajustamos
-          métricas e painéis após a imersão e leitura dos dados reais.
+          Dados e exemplos são ilustrativos. Métricas e painéis serão ajustados
+          após imersão e análise dos dados reais da operação da Mercante.
         </div>
       </div>
     </ModalWrapper>

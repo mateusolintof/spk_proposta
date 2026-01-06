@@ -48,7 +48,7 @@ export default function IntroSlide({ onEnter }: IntroSlideProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.8 }}
         >
-          Agentes de IA & Inteligência Comercial
+          Orquestração Inteligente de Atendimento Comercial
         </motion.h1>
 
         {/* Subtitle */}
@@ -58,9 +58,8 @@ export default function IntroSlide({ onEnter }: IntroSlideProps) {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.7 }}
         >
-          Atendimento Personalizado, Triagem Automática via Sistema de OCR,
-          ampla base de conhecimento e Gestão Inteligente de Dados de CRM e
-          Dashboard.
+          Fila inteligente, agentes especializados e governança para televendas,
+          eventos e cobrança. CRM + Dashboard executivo integrados.
         </motion.p>
 
         {/* Tagline */}
@@ -70,7 +69,7 @@ export default function IntroSlide({ onEnter }: IntroSlideProps) {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.9 }}
         >
-          Solução desenhada para o contexto da sua operação.
+          Solução desenhada para o contexto da Mercante Distribuidora.
         </motion.p>
 
         {/* CTA Button */}

@@ -1,129 +1,163 @@
-# 🎯 Proposta de Projeto
-## Sistema de Agentes de IA Conversacionais — Atendimento Comercial
+# Proposta Comercial
+## Orquestrador de Atendimento Comercial — Mercante Distribuidora
 
-**Cliente:** Modelo base
-**Preparado por:** Convert A.I — Arquitetura de Agentes de IA  
+**Cliente:** Mercante Distribuidora
+**Preparado por:** Convert A.I — Arquitetura de Agentes de IA
 
 ---
 
 ## 1) Diagnóstico Atual
 
-### Cenário (visão executiva)
+### Cenário da Operação
 
-- Alto volume de contatos e leads em canais digitais (principalmente WhatsApp).
-- Cobertura humana parcial (picos, fora do horário, fins de semana).
-- Follow-up manual e sem cadência consistente.
-- Dados fragmentados entre canais, ERP e controles paralelos (planilhas/rotinas).
+- **18 vendedores** em televendas.
+- **12-15 mil mensagens/mês** de volume.
+- Sistema atual: **Fortix** (cliente escolhe vendedor em lista, sem rotação automática).
+- **Eventos/feiras:** ~1000 leads por evento, follow-up demora ~30 dias.
+- **Cobrança:** ~1000 mensagens/dia com risco de perda de número WhatsApp.
 
-### Gargalos identificados
+### Gargalos Identificados
 
 | # | Gargalo | Impacto no negócio |
 |---|--------|--------------------|
-| 1 | Alto volume sem qualificação | Time perde tempo com demandas repetitivas e leads frios |
-| 2 | Primeira resposta lenta (SLA instável) | Conversas esfriam e a taxa de conversão cai |
-| 3 | Follow-up inconsistente | Orçamentos/pedidos pendentes não são recuperados |
-| 4 | Falta de visibilidade do funil | Gestão sem clareza de gargalos, motivos de perda e oportunidades |
-| 5 | Integrações fragmentadas | Retrabalho operacional (copiar/colar, registros manuais, erros) |
-| 6 | Tarefas repetitivas consumindo o time | Baixa produtividade e pouca escala em períodos de pico |
+| 1 | Sem fila inteligente | Lead fica preso se vendedor escolhido não responder |
+| 2 | Distribuição desigual | Vendedores sobrecarregados x ociosos |
+| 3 | SLA sem controle | Tempo de primeira resposta indefinido, lead esfria |
+| 4 | Follow-up de eventos tardio | ~1000 leads por evento desperdicados (30 dias para contato) |
+| 5 | Cobranca sem governanca | Risco de perda de numero WhatsApp, sem controle de limites |
+| 6 | Falta de visibilidade | Sem metricas de funil, SLA ou distribuicao por vendedor |
 
-> Observação: números e exemplos usados nesta proposta podem ser ilustrativos. Ajustamos metas e cenários após imersão e leitura de dados reais.
+### Onde a Receita se Perde
 
-### Indicadores de referência (exemplo)
+- **Lead sem resposta em 5+ min** → Esfria e busca concorrente.
+- **Lead preso em vendedor ocupado** → Sem rotacao, cliente espera ou desiste.
+- **Eventos:** Follow-up leva ~30 dias → ~1000 leads por evento desperdicados.
+- **Cobranca:** ~1000 mensagens/dia sem governanca → Risco de perda de numero.
 
-- Base simulada: **~500 leads/mês**
-- Leads fora do horário: **~64% (~320 leads/mês)**
-- Conversão atual: **~5%**
-- Conversão projetada com IA: **~10-12%**
-
-> Resultado esperado no cenário ilustrativo: **~14 vendas/mês → ~32 vendas/mês**.
+> Nota: Dados e exemplos usados nesta proposta sao ilustrativos. Metas e cenarios serao ajustados apos imersao e leitura dos dados reais.
 
 ---
 
-## 2) Solução Proposta — 3 Agentes + Ecossistema de Gestão
+## 2) Solucao Proposta — Orquestrador + 5 Frentes de Agentes
 
-### Proposta de valor
+### Proposta de Valor
 
-> Transformar o atendimento comercial em um processo 24/7, qualificado e governado por dados — com IA absorvendo o volume repetitivo e o time humano atuando no que realmente converte.
+> Transformar o atendimento de televendas da Mercante em operacao orquestrada: fila inteligente com SLA controlado, agentes especializados por jornada e governanca para proteger a operacao de cobranca.
 
-### Arquitetura (alto nível)
+### Arquitetura (alto nivel)
 
-- **Agentes especializados** (3 frentes).
-- **Handoffs inteligentes** para humano quando necessário.
-- **CRM integrado** (inbox + pipeline + histórico).
-- **Dashboard executivo** com KPIs e insights acionáveis.
-- **Integração com ERP e canais** (via API/webhooks conforme disponibilidade).
-- **Guardrails**: LGPD, auditoria, limites e políticas.
+- **Orquestrador de fila** com rotacao automatica entre 18 vendedores.
+- **5 frentes de agentes** especializados por jornada.
+- **Handoffs inteligentes** com contexto preservado.
+- **CRM integrado** (inbox + pipeline + historico).
+- **Dashboard executivo** com SLA, distribuicao e funil.
+- **Governanca WhatsApp** (limites, qualidade, opt-out).
+- **Integracao Fortix** (via API/webhooks).
+- **Guardrails**: LGPD, auditoria, human-in-loop.
 
 ---
 
-## 3) Agentes
+## 3) Frentes de Agentes
 
-### 3.1) Agente 1 — SDR & Qualificação
-
-**O que faz**
-- Atende novos leads 24/7, qualifica (intenção, perfil PF/PJ), coleta dados essenciais e direciona para orçamento/pedido.
-
-**Benefícios**
-- Resposta imediata para evitar “lead frio”.
-- Qualificação e roteamento automático (por perfil/etapa/intenções).
-- Registro automático no CRM com histórico e próxima ação.
-
-**Módulos**
-- Qualificação (score, tags, intenção).
-- Coleta de dados (CNPJ/CPF, endereço, preferências).
-- Encaminhamento (orçamento/pedido, pagamento ou vendedor).
-- Integração CRM/ERP (conforme escopo definido no kick-off).
-
-### 3.2) Agente 2 — Follow-up Automático (Anti-Abandono)
+### 3.1) Fila + SDR (Core)
 
 **O que faz**
-- Cadência automática para reativar conversas e recuperar orçamentos/pedidos pendentes.
+- Router de atendimento com qualificacao 24/7.
+- Distribui leads entre os 18 vendedores com balanceamento de carga.
+- Rotacao automatica se vendedor nao responder em 5 minutos.
 
-**Benefícios**
-- Reduz abandono e aumenta conversão.
-- “Próxima ação” sempre clara no pipeline.
-- Identifica e registra motivos de perda para melhoria contínua.
+**Beneficios**
+- SLA controlado: primeira resposta em menos de 3 minutos.
+- Lead nunca fica preso — fallback automatico.
+- Qualificacao e handoff com contexto preservado.
+- Distribuicao equilibrada (fim do vendedor sobrecarregado).
 
-**Módulos**
-- Sequências (ex.: 15min, 24h, 72h) com mensagens e gatilhos.
-- Escalação para humano conforme regra (valor, score, SLA, complexidade).
-- Relatórios de abandono, resposta e recuperação.
-
-### 3.3) Agente 3 — Pesquisa & NPS (Satisfação e Reputação)
+### 3.2) Closer Assist
 
 **O que faz**
-- Coleta feedback (NPS), identifica detratores e direciona promotores para avaliação pública quando apropriado.
+- Copiloto do vendedor para apoio no fechamento.
+- Fornece contexto, historico e sugestoes de abordagem.
 
-**Benefícios**
-- Visibilidade contínua de satisfação.
-- Ação rápida em casos críticos (alertas e playbooks).
-- Fortalece reputação e gera insights de melhoria.
+**Beneficios**
+- Vendedor recebe lead com contexto completo.
+- Alertas de oportunidade (cross-sell, up-sell).
+- Resumo de historico para retomada de conversa.
+- Sugestoes de proximos passos.
+
+### 3.3) Agente Eventos
+
+**O que faz**
+- Follow-up automatizado para leads de feiras e eventos presenciais.
+- Cadencia em 24h (nao 30 dias).
+
+**Beneficios**
+- Recuperacao de ~1000 leads por evento.
+- Cadencia automatizada com multiplos touchpoints.
+- Metricas de ROI por evento.
+- Atualizacao de dados de contato.
+
+### 3.4) Agente Cobranca
+
+**O que faz**
+- Regua de cobranca com governanca WhatsApp.
+- Controle de limites de envio e qualidade de numero.
+
+**Beneficios**
+- Multiplos canais (WhatsApp, SMS, e-mail) com fallback.
+- Limites de envio respeitados (Meta guidelines).
+- Human-in-loop para negociacoes de valor.
+- Protecao contra perda de numero.
+
+### 3.5) Recompra e Copiloto
+
+**O que faz**
+- Reativacao de clientes inativos.
+- Assistente interno do vendedor com resumo de historico.
+
+**Beneficios**
+- Campanhas de recompra automatizadas.
+- Segmentacao por tempo de inatividade.
+- Alertas de risco de churn.
+- Resumo de historico para vendedor.
 
 ---
 
 ## 4) Ferramentas
 
 ### CRM Integrado (operacional)
-- Inbox unificado (multicanal).
-- Pipeline de vendas (etapas, responsáveis, SLAs).
-- Histórico de conversas e auditoria de handoffs.
 
-### Dashboard Executivo (gestão)
-- KPIs por canal, etapa e período.
-- Taxas de conversão, abandono e motivos de perda.
-- Desempenho IA vs humano (resolução, escalados, tempo de resposta).
+- Inbox unificado (multicanal).
+- Pipeline de vendas (etapas, responsaveis, SLAs).
+- Historico de conversas e auditoria de handoffs.
+- Integracao com Fortix (sincronizacao de leads/status).
+
+### Dashboard Executivo (gestao)
+
+- **SLA** por vendedor e por periodo.
+- **Distribuicao** de carga entre os 18 vendedores.
+- **Taxa de abandono** por falta de resposta.
+- **Recovery de eventos** (% de leads de feiras que entraram no funil).
+- **Governanca WhatsApp** (qualidade do numero, limites).
+
+### Governanca WhatsApp
+
+- Controle de volume de envio (nao ultrapassa limites da Meta).
+- Opt-out respeitado automaticamente.
+- Multiplos canais de fallback (SMS, e-mail).
+- Templates aprovados e monitoramento de qualidade.
+- Alertas de risco antes que virem problemas.
 
 ---
 
-## 5) KPIs sugeridos (ajustáveis após imersão)
+## 5) KPIs Sugeridos (ajustaveis apos imersao)
 
-- **Tempo de primeira resposta** (por canal e por etapa).
-- **Taxa de qualificação** (leads qualificados / leads totais).
-- **Taxa de conversão** (qualificados → pedidos).
-- **Taxa de abandono** (conversas/pedidos pendentes sem resposta).
-- **Handoff rate** (IA → humano) e motivos.
-- **NPS** e volume de feedback (promotores/neutros/detratores).
-- **Receita em pipeline** e previsibilidade (quando aplicável).
+- **Tempo de primeira resposta** (meta: < 3 minutos).
+- **Distribuicao por vendedor** (balanceamento de carga).
+- **Taxa de SLA** (% de leads atendidos dentro do SLA).
+- **Taxa de abandono** (leads que esfriaram por falta de resposta).
+- **Recovery de eventos** (% de leads de feiras convertidos).
+- **Handoff rate** (orquestrador → vendedor) e contexto.
+- **Governanca WhatsApp** (qualidade do numero, limites de envio).
 
 ---
 
@@ -131,31 +165,65 @@
 
 | Fase | Objetivo | Entregas principais |
 |------|----------|---------------------|
-| 1 — Kick-off | Alinhamento e descoberta | Requisitos, eventos, dados e fluxos prioritários |
-| 2 — Construção | Setup e integrações | Base de conhecimento, CRM/Dashboard, conectores (ERP/canais) |
-| 3 — Validação | Piloto controlado | Testes com equipe, ajustes de copy/fluxos, regras de handoff |
-| 4 — Go-Live | Operação + otimização | Monitoramento, melhoria contínua e metas por KPI |
+| 1 — Imersao | Diagnostico de fila + dados | Desenho de roteamento, integracao Fortix, governanca |
+| 2 — Piloto | Core (Fila + SDR) operando | Validacao com 1-2 vendedores, ajustes de fluxo |
+| 3 — Rollout | Expansao + integracoes | Toda equipe, Fortix, eventos, cobranca |
+| 4 — Otimizacao | Analise + frentes adicionais | Recompra, copiloto, metricas, melhoria continua |
 
 ---
 
 ## 7) Investimento
 
-### Planos por agente (exemplo)
+### Frentes de Agentes (escolha modular)
 
-- **Follow-up Automático:** setup R$ 5.000 + R$ 1.000/mês
-- **SDR & Qualificação:** setup R$ 15.000 + R$ 2.000/mês
-- **Pós-vendas & NPS:** setup R$ 5.000 + R$ 1.000/mês
+| Frente | Setup | Mensal |
+|--------|-------|--------|
+| Fila + SDR (Core) | Sob consulta | Sob consulta |
+| Closer Assist | Sob consulta | Sob consulta |
+| Agente Eventos | Sob consulta | Sob consulta |
+| Agente Cobranca | Sob consulta | Sob consulta |
+| Recompra e Copiloto | Sob consulta | Sob consulta |
 
-### Pacote completo (exemplo)
+### Pacote Completo (Recomendado)
 
-- **Ecossistema Full:** setup **R$ 0** (desconto sobre R$ 25.000) + **R$ 4.000/mês**
+- **Setup:** Sob consulta
+- **Mensalidade:** Sob consulta
 
 **Incluso no pacote**
-- 3 agentes configurados com base de conhecimento.
-- CRM e Dashboard configurados.
-- Integração com ERP e canais (via API/webhooks, conforme escopo definido no kick-off).
+- Orquestrador de fila + roteamento inteligente.
+- 5 agentes configurados com base de conhecimento.
+- CRM + Dashboard executivo.
+- Integracoes (Fortix, WhatsApp API, ERP).
+- Governanca WhatsApp incluida.
 - Treinamento e 30 dias de acompanhamento.
 
 **Notas**
-- Valores e cenários são referenciais para proposta comercial.
-- Detalhes de integração (quais eventos/dados, periodicidade, limites) são fechados na fase 1 (Kick-off).
+- Valores personalizados apos diagnostico e imersao com a equipe da Mercante.
+- Detalhes de integracao (quais eventos/dados, periodicidade, limites) sao definidos na fase 1 (Imersao).
+- Solicite proposta personalizada para sua operacao.
+
+---
+
+## 8) Perguntas Frequentes
+
+### Como integra com o Fortix e WhatsApp API?
+A integracao e feita via API e webhooks, sem substituir o sistema atual. O orquestrador funciona como uma camada acima do Fortix, recebendo os leads e distribuindo inteligentemente entre os vendedores.
+
+### Como evitamos perda de numero/limite no WhatsApp?
+Governanca de WhatsApp com: controle de volume de envio, opt-out respeitado automaticamente, multiplos canais de fallback (SMS, e-mail), e templates aprovados.
+
+### Como fica LGPD e auditoria?
+Solucao desenhada com boas praticas de privacidade: criptografia em transito e em repouso, controle de acesso por perfil, trilhas de auditoria completas e politicas de retencao configuraveis.
+
+### Quem aprova mensagens de cobranca?
+A regua de cobranca tem human-in-loop configuravel. Mensagens padrao sao automatizadas. Negociacoes de valor ou clientes sensiveis sao escalados para aprovacao.
+
+### Preciso trocar o Fortix ou o sistema atual?
+Nao! O orquestrador funciona como uma camada acima do sistema atual. O Fortix continua sendo usado pela equipe.
+
+### Qual o prazo de implementacao?
+Em geral, 4 a 8 semanas dependendo da complexidade das integracoes. Comecamos com um piloto com 1-2 vendedores.
+
+---
+
+**Proximo passo:** Agendar imersao para diagnostico detalhado e proposta personalizada.

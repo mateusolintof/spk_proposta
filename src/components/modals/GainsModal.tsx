@@ -17,17 +17,16 @@ interface GainsModalProps {
 }
 
 const workloadData = [
-  { name: "Seg", ia: 68, humano: 34 },
-  { name: "Ter", ia: 72, humano: 40 },
-  { name: "Qua", ia: 78, humano: 46 },
-  { name: "Qui", ia: 75, humano: 42 },
-  { name: "Sex", ia: 66, humano: 38 },
-  { name: "Sab", ia: 54, humano: 22 },
+  { name: "Pico (9-11h)", ia: 82, humano: 38 },
+  { name: "Almoço", ia: 65, humano: 15 },
+  { name: "Tarde (14-17h)", ia: 78, humano: 42 },
+  { name: "Fora horário", ia: 58, humano: 5 },
+  { name: "Finais semana", ia: 45, humano: 8 },
 ];
 
 const workloadChartConfig = {
-  ia: { label: "IA", color: "#00E5FF" },
-  humano: { label: "Humano", color: "#1a3a4a" },
+  ia: { label: "Orquestrador", color: "#00E5FF" },
+  humano: { label: "Vendedor", color: "#1a3a4a" },
 } satisfies ChartConfig;
 
 function Bullet({ children }: { children: ReactNode }) {
@@ -48,13 +47,12 @@ export default function GainsModal({ isOpen, onClose }: GainsModalProps) {
       isOpen={isOpen}
       onClose={onClose}
       title="Ganhos Operacionais"
-      subtitle="Impacto direto na operação comercial"
+      subtitle="Impacto direto na operação da Mercante"
     >
       <div className="space-y-6">
         <div className="text-body text-white/70">
-          Esta é uma visão do que muda na operação quando o volume repetitivo é
-          absorvido pela IA, com governança de pipeline e relatórios para
-          gestão.
+          Esta é uma visão do que muda quando a fila inteligente absorve o volume
+          repetitivo, com SLA controlado e distribuição equilibrada entre os 18 vendedores.
         </div>
 
         <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
@@ -67,22 +65,21 @@ export default function GainsModal({ isOpen, onClose }: GainsModalProps) {
                 </div>
                 <div className="min-w-0">
                   <h4 className="text-base font-bold text-white">
-                    Receita capturada com cadência
+                    SLA Controlado (&lt;3 min)
                   </h4>
                   <p className="mt-1 text-body text-white/60">
-                    Leads entram fora do horário, voltam para o funil e seguem
-                    um próximo passo claro — sem depender de memória ou
-                    planilhas.
+                    Lead nunca fica preso. Fila inteligente com rotação automática
+                    se vendedor não responder em 5 minutos.
                   </p>
                   <div className="mt-4 space-y-2">
                     <Bullet>
-                      Resposta imediata 24/7 para não &quot;esfriar&quot; o lead.
+                      Resposta imediata 24/7 — lead não &quot;esfria&quot;.
                     </Bullet>
                     <Bullet>
-                      Qualificação e roteamento por perfil (PF/PJ) e intenção.
+                      Rotação automática entre os 18 vendedores.
                     </Bullet>
                     <Bullet>
-                      Follow-up automático com prioridade por intenção.
+                      Handoff com contexto preservado.
                     </Bullet>
                   </div>
                 </div>
@@ -96,19 +93,19 @@ export default function GainsModal({ isOpen, onClose }: GainsModalProps) {
                 </div>
                 <div className="min-w-0">
                   <h4 className="text-base font-bold text-white">
-                    Menos ruído, mais produtividade
+                    Distribuição Equilibrada
                   </h4>
                   <p className="mt-1 text-body text-white/60">
-                    A operação deixa de ser call center. O time humano atua onde
-                    faz diferença: negociação, casos complexos e relacionamento.
+                    Fim do vendedor sobrecarregado. Balanceamento de carga inteligente
+                    com fallback e priorização por disponibilidade.
                   </p>
                   <div className="mt-4 space-y-2">
                     <Bullet>
-                      Fila única com contexto e histórico da conversa.
+                      Carga balanceada entre os 18 vendedores.
                     </Bullet>
-                    <Bullet>Distribuição por responsável e por canal.</Bullet>
+                    <Bullet>Priorização por disponibilidade e skills.</Bullet>
                     <Bullet>
-                      Checklist de próximos passos para reduzir retrabalho.
+                      Métricas de distribuição por vendedor em tempo real.
                     </Bullet>
                   </div>
                 </div>
@@ -122,21 +119,21 @@ export default function GainsModal({ isOpen, onClose }: GainsModalProps) {
                 </div>
                 <div className="min-w-0">
                   <h4 className="text-base font-bold text-white">
-                    Pipeline mais previsível
+                    Eventos em 24h (não 30 dias)
                   </h4>
                   <p className="mt-1 text-body text-white/60">
-                    Cadência automática e reativação guiada diminuem perdas — e
-                    deixam claro onde estão os gargalos do funil.
+                    Follow-up automatizado para ~1000 leads por evento.
+                    Cadência que converte, não planilha que esquece.
                   </p>
                   <div className="mt-4 space-y-2">
                     <Bullet>
-                      Cadência automática para orçamentos e pedidos pendentes.
+                      Follow-up em 24h pós-evento.
                     </Bullet>
                     <Bullet>
-                      Recuperação de conversões com alternativas e próxima ação.
+                      Cadência automatizada com múltiplos touchpoints.
                     </Bullet>
                     <Bullet>
-                      Registro de motivos para melhoria contínua.
+                      Métricas de ROI por evento.
                     </Bullet>
                   </div>
                 </div>
@@ -150,11 +147,10 @@ export default function GainsModal({ isOpen, onClose }: GainsModalProps) {
               <div className="flex items-start justify-between gap-4">
                 <div className="min-w-0">
                   <div className="text-body font-semibold text-white">
-                    Carga de atendimento (exemplo)
+                    Distribuição por horário (exemplo)
                   </div>
                   <div className="mt-1 text-xs text-white/50">
-                    IA absorve picos e fora do horário; humano foca no que
-                    converte.
+                    Orquestrador absorve picos e fora do horário; vendedor foca em fechamento.
                   </div>
                 </div>
                 <div className="flex shrink-0 items-center gap-2 text-xs text-white/60">
@@ -163,14 +159,14 @@ export default function GainsModal({ isOpen, onClose }: GainsModalProps) {
                       className="h-2 w-2 rounded-full"
                       style={{ backgroundColor: "#00E5FF" }}
                     />
-                    IA
+                    Orq.
                   </span>
                   <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1">
                     <span
                       className="h-2 w-2 rounded-full"
                       style={{ backgroundColor: "#1a3a4a" }}
                     />
-                    Humano
+                    Vendedor
                   </span>
                 </div>
               </div>
@@ -215,26 +211,25 @@ export default function GainsModal({ isOpen, onClose }: GainsModalProps) {
 
             <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
               <div className="text-body font-semibold text-white">
-                O que aparece em Reports
+                KPIs do Dashboard
               </div>
               <div className="mt-3 space-y-2">
                 <Bullet>
-                  Tempo de primeira resposta por canal e por etapa (IA vs
-                  humano).
+                  SLA de primeira resposta por vendedor e por período.
                 </Bullet>
                 <Bullet>
-                  Conversão por etapa, origem e responsável — com histórico.
+                  Distribuição de carga entre os 18 vendedores (balanceamento).
                 </Bullet>
                 <Bullet>
-                  Abandono, cancelamentos e motivos de perda por período.
+                  Taxa de abandono: leads que &quot;esfriaram&quot; por falta de resposta.
                 </Bullet>
                 <Bullet>
-                  Motivos de perda e recomendações acionáveis geradas por IA.
+                  Recovery de eventos: % de leads de feiras que entraram no funil.
                 </Bullet>
               </div>
               <div className="mt-4 text-xs text-white/40">
                 Dados e metas são ilustrativos nesta proposta. Ajustamos após a
-                imersão e leitura dos dados reais.
+                imersão e leitura dos dados reais da Mercante.
               </div>
             </div>
           </div>

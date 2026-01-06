@@ -2,39 +2,56 @@
 
 import { motion } from "framer-motion";
 import {
-  MessageSquare,
-  CalendarCheck,
-  Star,
+  GitBranch,
+  Handshake,
+  Calendar,
+  Receipt,
+  RefreshCw,
   BrainCircuit,
 } from "lucide-react";
 import SlideShell from "@/components/ui/SlideShell";
 import type { ModalKind, AgentType } from "@/types/modal";
 
-const ORBIT_RADIUS = "clamp(100px, 14vw, 160px)";
-const AGENT_ANGLES = [0, 120, 240];
+const ORBIT_RADIUS = "clamp(110px, 16vw, 180px)";
+const AGENT_ANGLES = [0, 72, 144, 216, 288]; // 5 agentes em 360°
 
-const agents: { id: AgentType; name: string; icon: React.ReactNode }[] = [
+const agents: { id: AgentType; name: string; icon: React.ReactNode; color: string }[] = [
   {
-    id: "nps",
-    name: "Pós-vendas & NPS",
-    icon: <Star className="w-5 h-5" />,
+    id: "fila_sdr",
+    name: "Fila + SDR",
+    icon: <GitBranch className="w-5 h-5" />,
+    color: "#00E5FF",
   },
   {
-    id: "sdr",
-    name: "SDR & Qualificação",
-    icon: <MessageSquare className="w-5 h-5" />,
+    id: "closer",
+    name: "Closer Assist",
+    icon: <Handshake className="w-5 h-5" />,
+    color: "#00FF94",
   },
   {
-    id: "noshow",
-    name: "Follow-up Automático",
-    icon: <CalendarCheck className="w-5 h-5" />,
+    id: "eventos",
+    name: "Agente Eventos",
+    icon: <Calendar className="w-5 h-5" />,
+    color: "#FFD700",
+  },
+  {
+    id: "cobranca",
+    name: "Agente Cobrança",
+    icon: <Receipt className="w-5 h-5" />,
+    color: "#FF6B6B",
+  },
+  {
+    id: "recompra_copiloto",
+    name: "Recompra & Copiloto",
+    icon: <RefreshCw className="w-5 h-5" />,
+    color: "#A855F7",
   },
 ];
 
 const features = [
-  { title: "Ferramentas Técnicas", desc: "Leitura de faturas (OCR), cálculos matemáticos avançados e pesquisas na internet" },
-  { title: "Integrações", desc: "CRM, ERP e base de conhecimento integrados" },
-  { title: "Guardrails e Handoff", desc: "Segurança, limites de alucinações e escala inteligente para humanos em casos críticos" },
+  { title: "Fila Inteligente & Roteamento", desc: "Distribuição equilibrada entre 18 vendedores com SLA controlado e rotação automática" },
+  { title: "Governança WhatsApp", desc: "Limites de envio, opt-out respeitado e múltiplos canais para evitar perda de número" },
+  { title: "Integrações", desc: "Fortix, ERP e base de conhecimento integrados com handoff inteligente para humanos" },
 ];
 
 interface SolucaoSlideProps {
@@ -47,7 +64,7 @@ export default function SolucaoSlide({ onOpenModal }: SolucaoSlideProps) {
       eyebrow="Solução"
       eyebrowColor="success"
       title="Arquitetura da Solução"
-      subtitle="3 Agentes Especializados + Ecossistema de Gestão"
+      subtitle="5 Frentes de Agentes + Orquestração Inteligente"
       align="center"
       size="compact"
       background={
@@ -56,7 +73,7 @@ export default function SolucaoSlide({ onOpenModal }: SolucaoSlideProps) {
     >
       <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-8 w-full items-center">
         {/* Orbit Container */}
-        <div className="relative w-[min(380px,45vh)] h-[min(380px,45vh)] flex items-center justify-center z-10 mx-auto">
+        <div className="relative w-[min(420px,50vh)] h-[min(420px,50vh)] flex items-center justify-center z-10 mx-auto">
           {/* Center Core */}
           <div className="absolute w-20 h-20 bg-white/10 backdrop-blur-xl rounded-full border border-white/20 flex items-center justify-center shadow-[0_0_60px_rgba(0,255,148,0.15)]">
             <BrainCircuit
@@ -70,7 +87,7 @@ export default function SolucaoSlide({ onOpenModal }: SolucaoSlideProps) {
           <div className="absolute inset-12 border border-dashed border-white/10 rounded-full motion-reduce:animate-none animate-[spin_20s_linear_infinite_reverse]" />
 
           {/* Agents (orbiting) */}
-          <div className="absolute inset-0 motion-reduce:animate-none animate-[spin_40s_linear_infinite]">
+          <div className="absolute inset-0 motion-reduce:animate-none animate-[spin_50s_linear_infinite]">
             {agents.map((agent, index) => {
               const angle = AGENT_ANGLES[index] ?? 0;
               return (
@@ -82,24 +99,37 @@ export default function SolucaoSlide({ onOpenModal }: SolucaoSlideProps) {
                   }}
                 >
                   <div style={{ transform: `rotate(-${angle}deg)` }}>
-                    <div className="motion-reduce:animate-none animate-[spin_40s_linear_infinite_reverse]">
+                    <div className="motion-reduce:animate-none animate-[spin_50s_linear_infinite_reverse]">
                       <motion.button
                         type="button"
                         onClick={() => onOpenModal?.({ type: "agent", agent: agent.id })}
-                        className="relative w-14 h-14 rounded-full bg-black/60 border border-white/20 hover:border-[#00FF94] transition-all flex items-center justify-center backdrop-blur-md group cursor-pointer"
+                        className="relative w-12 h-12 rounded-full bg-black/60 border border-white/20 transition-all flex items-center justify-center backdrop-blur-md group cursor-pointer"
+                        style={{
+                          borderColor: `${agent.color}40`,
+                        }}
                         initial={{ opacity: 0, scale: 0 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
-                        transition={{ delay: 0.2 + index * 0.1 }}
-                        whileHover={{ scale: 1.15, boxShadow: "0 0 20px rgba(0, 255, 148, 0.4)" }}
+                        transition={{ delay: 0.2 + index * 0.08 }}
+                        whileHover={{
+                          scale: 1.15,
+                          boxShadow: `0 0 20px ${agent.color}60`,
+                          borderColor: agent.color,
+                        }}
                         whileTap={{ scale: 0.95 }}
                       >
                         {/* Pulse ring */}
-                        <span className="absolute inset-0 rounded-full border border-[#00FF94]/30 animate-ping opacity-30" />
-                        <div className="text-white/80 group-hover:text-[#00FF94] transition-colors">
+                        <span
+                          className="absolute inset-0 rounded-full border animate-ping opacity-30"
+                          style={{ borderColor: `${agent.color}50` }}
+                        />
+                        <div
+                          className="transition-colors"
+                          style={{ color: agent.color }}
+                        >
                           {agent.icon}
                         </div>
-                        <span className="absolute -bottom-10 text-[11px] font-medium text-white/60 group-hover:text-white whitespace-nowrap text-center leading-tight transition-colors">
+                        <span className="absolute -bottom-9 text-[10px] font-medium text-white/60 group-hover:text-white whitespace-nowrap text-center leading-tight transition-colors">
                           {agent.name}
                         </span>
                       </motion.button>

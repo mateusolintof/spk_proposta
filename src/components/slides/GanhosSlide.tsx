@@ -5,36 +5,37 @@ import {
   Zap,
   CalendarCheck,
   TrendingUp,
-  TrendingDown,
+  Users,
   Calculator,
   DollarSign,
   Clock,
   ArrowRight,
   BarChart3,
+  Shield,
 } from "lucide-react";
 import SlideShell from "@/components/ui/SlideShell";
 import type { ModalKind } from "@/types/modal";
 
 const highlights = [
   {
-    icon: <TrendingUp className="w-5 h-5" />,
-    label: "ROI Projetado",
-    value: "+300%",
-    desc: "em 12 meses",
+    icon: <Clock className="w-5 h-5" />,
+    label: "SLA Garantido",
+    value: "<3 min",
+    desc: "primeira resposta",
     color: "#00FF94",
   },
   {
-    icon: <Clock className="w-5 h-5" />,
-    label: "Payback",
-    value: "3-4",
-    desc: "meses",
+    icon: <Users className="w-5 h-5" />,
+    label: "Distribuição",
+    value: "18",
+    desc: "vendedores equilibrados",
     color: "#00E5FF",
   },
   {
-    icon: <TrendingDown className="w-5 h-5" />,
-    label: "Economia",
-    value: "-60%",
-    desc: "custos operacionais",
+    icon: <CalendarCheck className="w-5 h-5" />,
+    label: "Follow-up Eventos",
+    value: "24h",
+    desc: "vs 30 dias atual",
     color: "#FFD700",
   },
 ];
@@ -42,26 +43,26 @@ const highlights = [
 const gains = [
   {
     icon: <Zap className="w-6 h-6" />,
-    title: "Retenção de Lead Frio",
-    desc: "O lead de tráfego frio exige velocidade. Ao responder em segundos e já apresentar o cálculo de economia, evitamos que ele continue pesquisando e vá para o concorrente.",
+    title: "SLA Controlado",
+    desc: "Lead nunca fica preso. Fila inteligente com rotação automática se vendedor não responder em 5 minutos. Primeira resposta em menos de 3 minutos.",
     color: "cyan",
   },
   {
-    icon: <CalendarCheck className="w-6 h-6" />,
-    title: "Financeiro (OCR)",
-    desc: "A IA atua como uma barreira de qualidade: lê a fatura, valida o ticket mínimo e descarta curiosos automaticamente, protegendo a agenda dos vendedores.",
+    icon: <Users className="w-6 h-6" />,
+    title: "Distribuição Equilibrada",
+    desc: "Fim do vendedor sobrecarregado. Balanceamento de carga inteligente entre os 18 vendedores, com fallback e priorização por disponibilidade.",
     color: "green",
   },
   {
-    icon: <TrendingUp className="w-6 h-6" />,
-    title: "Maturação de Oportunidades",
-    desc: "Leads que não fecham agora não são perdidos. O Agente mantém o follow-up ativo e nutre o CRM, reaquecendo contatos para vendas futuras.",
+    icon: <CalendarCheck className="w-6 h-6" />,
+    title: "Eventos Convertidos",
+    desc: "Follow-up em 24h (não 30 dias). Cadência automatizada para leads de feiras e eventos presenciais com ~1000 leads por evento.",
     color: "cyan",
   },
   {
-    icon: <DollarSign className="w-6 h-6" />,
-    title: "Foco Exclusivo em Fechamento",
-    desc: "Inversão da lógica de trabalho: o humano para de prospectar e começa a negociar. Menos tempo operacional, mais tempo persuasivo.",
+    icon: <Shield className="w-6 h-6" />,
+    title: "Cobrança Segura",
+    desc: "Governança WhatsApp para evitar perda de número. Múltiplos canais, limites de envio respeitados e human-in-loop para negociações.",
     color: "green",
   },
 ];
@@ -76,8 +77,8 @@ export default function GanhosSlide({ onOpenModal }: GanhosSlideProps) {
     <SlideShell
       eyebrow="Resultados"
       eyebrowColor="success"
-      title="Resultados & Viabilidade Econômica"
-      subtitle="Ganhos operacionais e simuladores para validar ROI e economia."
+      title="Resultados Esperados"
+      subtitle="Ganhos operacionais concretos para a operação da Mercante"
       align="center"
       background={
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-[#00FF94]/5 via-transparent to-transparent pointer-events-none" />
@@ -86,7 +87,7 @@ export default function GanhosSlide({ onOpenModal }: GanhosSlideProps) {
       <div className="w-full space-y-8">
         {/* Calculator Cards */}
         <div className="flex items-center justify-between text-xs uppercase tracking-[0.25em] text-white/40 max-w-4xl mx-auto">
-          <span>Simuladores principais</span>
+          <span>Simuladores (valores ilustrativos)</span>
           <span className="hidden sm:inline">Clique para simular</span>
         </div>
 
@@ -108,15 +109,15 @@ export default function GanhosSlide({ onOpenModal }: GanhosSlideProps) {
               </div>
               <div className="flex-1">
                 <h3 className="text-xl font-semibold text-white group-hover:text-[#00FF94] transition-colors">
-                  Calculadora de ROI
+                  Simulador de Impacto
                 </h3>
                 <p className="text-white/60 mt-2 text-body leading-relaxed">
-                  Simule o retorno do investimento com volume de leads, ticket
-                  médio e conversão atual.
+                  Simule o impacto na operação com base em volume de mensagens,
+                  ticket médio e taxa de conversão atual.
                 </p>
                 <div className="mt-4 flex items-center gap-2 text-[#00FF94]">
                   <Zap className="w-4 h-4" />
-                  <span className="text-body font-medium">Calcular agora</span>
+                  <span className="text-body font-medium">Simular agora</span>
                 </div>
               </div>
             </div>
@@ -139,15 +140,15 @@ export default function GanhosSlide({ onOpenModal }: GanhosSlideProps) {
               </div>
               <div className="flex-1">
                 <h3 className="text-xl font-semibold text-white group-hover:text-[#00E5FF] transition-colors">
-                  Simulador de Economia
+                  Ganho de Capacidade
                 </h3>
                 <p className="text-white/60 mt-2 text-body leading-relaxed">
-                  Calcule a redução de custos com base no tamanho do time e no
-                  nível de automação.
+                  Calcule o aumento de capacidade por vendedor com
+                  orquestração e automação de tarefas repetitivas.
                 </p>
                 <div className="mt-4 flex items-center gap-2 text-[#00E5FF]">
                   <Zap className="w-4 h-4" />
-                  <span className="text-body font-medium">Simular economia</span>
+                  <span className="text-body font-medium">Simular ganho</span>
                 </div>
               </div>
             </div>
@@ -252,8 +253,8 @@ export default function GanhosSlide({ onOpenModal }: GanhosSlideProps) {
           viewport={{ once: true }}
           transition={{ delay: 1 }}
         >
-          * Valores projetados com base em benchmarks de mercado. Use os
-          simuladores para criar cenários personalizados.
+          * Valores e métricas são ilustrativos. Os resultados reais serão definidos
+          após diagnóstico e imersão com a equipe da Mercante.
         </motion.p>
       </div>
     </SlideShell>

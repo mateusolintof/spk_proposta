@@ -1,6 +1,17 @@
-# Modelo de Proposta de Agentes IA
+# Proposta Comercial — Mercante Distribuidora
 
-Apresentacao interativa horizontal para Proposta Comercial da minha agência de Tecnologia - Convert.AI - com background 3D sutil, modais interativos e animacoes profissionais.
+Apresentacao interativa horizontal para Proposta Comercial da Convert.AI, personalizada para **Mercante Distribuidora** — orquestracao inteligente de atendimento comercial para televendas, eventos e cobranca.
+
+## Contexto do Cliente
+
+| Dado | Valor |
+|------|-------|
+| Time de televendas | 18 vendedores |
+| Volume mensal | 12-15 mil mensagens |
+| Sistema atual | Fortix (cliente escolhe vendedor em lista) |
+| Gargalo principal | Fila sem rotacao (lead preso se vendedor nao responde) |
+| Eventos | ~1000 leads por evento, follow-up leva ~30 dias |
+| Cobranca | ~1000 mensagens/dia, risco de perda de numero WhatsApp |
 
 ## Stack
 
@@ -8,6 +19,7 @@ Apresentacao interativa horizontal para Proposta Comercial da minha agência de 
 |------------|--------|-----|
 | Next.js | 16.1.1 | App Router com Webpack (Turbopack opcional) |
 | React | 19.2.3 | UI Library |
+| TypeScript | 5.x | Tipagem estatica |
 | Tailwind CSS | v4 | Estilizacao com `@theme inline` |
 | Framer Motion | 12.x | Animacoes de slides e modais |
 | React Three Fiber | 9.x | Background 3D |
@@ -47,27 +59,27 @@ src/
 │   │   ├── Scene.tsx              # Canvas R3F com post-processing
 │   │   └── ElegantNetwork.tsx     # Particulas conectadas animadas
 │   ├── slides/
-│   │   ├── IntroSlide.tsx         # Hero com logo e titulo
-│   │   ├── DiagnosticoSlide.tsx   # Diagnostico explicativo + mini graficos
-│   │   ├── ObjetivoProjetoSlide.tsx # Objetivo e diferencais tecnicos
-│   │   ├── SolucaoSlide.tsx       # 3 agentes com arquitetura
+│   │   ├── IntroSlide.tsx         # Hero "Orquestracao Inteligente"
+│   │   ├── DiagnosticoSlide.tsx   # 18 vendedores, gargalos de fila
+│   │   ├── ObjetivoProjetoSlide.tsx # Objetivos Mercante
+│   │   ├── SolucaoSlide.tsx       # 5 agentes com arquitetura
 │   │   ├── FerramentasSlide.tsx   # CRM e Dashboard
-│   │   ├── GanhosSlide.tsx        # Resultados + Viabilidade
-│   │   ├── InvestimentoSlide.tsx  # Precos, pacotes e entregaveis
-│   │   ├── FAQSlide.tsx           # Perguntas frequentes
-│   │   └── CronogramaSlide.tsx    # 4 fases de implementacao
+│   │   ├── GanhosSlide.tsx        # SLA <3min, distribuicao, eventos
+│   │   ├── InvestimentoSlide.tsx  # 5 frentes + pacote (sob consulta)
+│   │   ├── FAQSlide.tsx           # Perguntas Fortix/WhatsApp/LGPD
+│   │   └── CronogramaSlide.tsx    # 4 fases: Imersao ate Otimizacao
 │   ├── modals/
 │   │   ├── ModalWrapper.tsx       # Wrapper base para modais
-│   │   ├── AgentModal.tsx         # Detalhes dos agentes IA
+│   │   ├── AgentModal.tsx         # Detalhes dos 5 agentes IA
 │   │   ├── CRMPreviewModal.tsx    # Preview interativo do CRM
 │   │   ├── DashboardPreviewModal.tsx  # Preview do Dashboard
-│   │   ├── ROICalculatorModal.tsx # Calculadora de ROI
-│   │   ├── CostReductionModal.tsx # Simulador de economia
-│   │   ├── GainsModal.tsx         # Ganhos operacionais
-│   │   ├── IntelligenceModal.tsx  # Inteligencia de dados
+│   │   ├── ROICalculatorModal.tsx # Simulador de impacto (SLA)
+│   │   ├── CostReductionModal.tsx # Ganho de capacidade por vendedor
+│   │   ├── GainsModal.tsx         # KPIs operacionais Mercante
+│   │   ├── IntelligenceModal.tsx  # Inteligencia de dados (canais, abandono)
 │   │   ├── agents/
-│   │   │   ├── RadialCapabilityDiagram.tsx  # Infografico em etapas
-│   │   │   └── AgentFlowDiagram.tsx         # Fluxograma interativo
+│   │   │   ├── RadialCapabilityDiagram.tsx  # Infografico em etapas (5 agentes)
+│   │   │   └── AgentFlowDiagram.tsx         # Fluxograma interativo (5 agentes)
 │   │   ├── crm/
 │   │   │   ├── CRMDashboardView.tsx   # Visao geral CRM
 │   │   │   ├── CRMContactsView.tsx    # Lista de contatos
@@ -89,12 +101,11 @@ src/
 
 public/
 ├── branding/
-│   ├── cmremedios-logo.png
 │   ├── logo.svg
 │   ├── logo-badge-white.svg
 │   └── logo-placeholder.svg
 └── docs/
-    └── CONTEUDO.md                # Documento de negocio detalhado
+    └── CONTEUDO.md                # Documento de negocio Mercante
 ```
 
 ## Paleta de Cores
@@ -102,31 +113,36 @@ public/
 | Token | Hex | Uso |
 |-------|-----|-----|
 | Background | `#02040A` | Fundo principal |
-| Tech Cyan | `#00E5FF` | Destaques tecnologicos |
-| Success Green | `#00FF94` | Metricas positivas, CTAs |
+| Tech Cyan | `#00E5FF` | Destaques tecnologicos, Fila+SDR |
+| Success Green | `#00FF94` | Metricas positivas, CTAs, Closer |
+| Ouro | `#FFD700` | Agente Eventos |
+| Vermelho | `#FF6B6B` | Agente Cobranca |
+| Roxo | `#A855F7` | Recompra & Copiloto |
 | White | `#FFFFFF` / `rgba` | Textos e bordas |
 
 ## Slides (9 secoes)
 
 | # | Slide | Descricao | Modais |
 |---|-------|-----------|--------|
-| 1 | Intro | Logo, titulo hero, tagline | - |
-| 2 | Diagnostico | Metricas de cobertura e pain points | - |
-| 3 | Objetivo | Requisitos e diferencais tecnicos | - |
-| 4 | Solucao | 3 agentes IA com arquitetura | AgentModal |
-| 5 | Ferramentas | CRM, Dashboard, historico | CRMPreviewModal, DashboardPreviewModal |
-| 6 | Resultados | Ganhos esperados + Viabilidade | GainsModal, IntelligenceModal, ROICalculatorModal, CostReductionModal |
-| 7 | Investimento | Precos, pacotes e entregaveis | - |
-| 8 | FAQ | Perguntas frequentes (accordion) | - |
-| 9 | Cronograma | 4 fases ate Go-Live | - |
+| 1 | Intro | Orquestracao inteligente de atendimento comercial | - |
+| 2 | Diagnostico | 18 vendedores, gargalos de fila e SLA | - |
+| 3 | Objetivo | Fila inteligente, governanca, agentes por jornada | - |
+| 4 | Solucao | 5 agentes IA com arquitetura orbital | AgentModal |
+| 5 | Ferramentas | CRM, Dashboard, integracao Fortix | CRMPreviewModal, DashboardPreviewModal |
+| 6 | Resultados | SLA <3min, distribuicao, eventos 24h | GainsModal, IntelligenceModal, ROICalculatorModal, CostReductionModal |
+| 7 | Investimento | 5 frentes + pacote completo (sob consulta) | - |
+| 8 | FAQ | Fortix, WhatsApp, LGPD, prazos | - |
+| 9 | Cronograma | Imersao, Piloto, Rollout, Otimizacao | - |
 
 ## Sistema de Modais
 
 ### Tipos de Modal
 
 ```typescript
+type AgentType = "fila_sdr" | "closer" | "eventos" | "cobranca" | "recompra_copiloto";
+
 type ModalKind =
-  | { type: "agent"; agent: "sdr" | "noshow" | "nps" }
+  | { type: "agent"; agent: AgentType }
   | { type: "crm" }
   | { type: "dashboard" }
   | { type: "roi" }
@@ -136,13 +152,15 @@ type ModalKind =
   | null;
 ```
 
-### Agentes IA (3 tipos)
+### Agentes IA (5 frentes)
 
-| Agente | Nome Completo | Funcao |
-|--------|---------------|--------|
-| SDR | SDR & Qualificacao | Qualificacao e conversao 24/7 |
-| NoShow | Follow-up Automatico | Cadencia e recuperacao de conversoes |
-| NPS | Pesquisa & NPS | Coleta de feedback pos-compra |
+| ID | Nome | Funcao | Cor |
+|----|------|--------|-----|
+| fila_sdr | Fila + SDR | Router de atendimento com qualificacao 24/7 | Cyan (#00E5FF) |
+| closer | Closer Assist | Copiloto do vendedor para fechamento | Verde (#00FF94) |
+| eventos | Agente Eventos | Follow-up automatizado para feiras/eventos | Ouro (#FFD700) |
+| cobranca | Agente Cobranca | Regua de cobranca com governanca WhatsApp | Vermelho (#FF6B6B) |
+| recompra_copiloto | Recompra & Copiloto | Reativacao de clientes + assistente interno | Roxo (#A855F7) |
 
 Cada agente possui:
 - Infografico em etapas (RadialCapabilityDiagram)
@@ -165,6 +183,15 @@ Navegacao por abas:
 - Clientes (base de clientes)
 - Insights (recomendacoes)
 
+### Modais de Calculadora
+
+| Modal | Descricao |
+|-------|-----------|
+| ROICalculatorModal | Simulador de impacto no SLA (mensagens/mes, taxa de SLA, capacidade) |
+| CostReductionModal | Ganho de capacidade por vendedor (nao corte de equipe) |
+| GainsModal | KPIs operacionais: SLA, distribuicao, eventos, cobranca |
+| IntelligenceModal | Canais (WhatsApp, Fortix, Eventos), motivos de abandono |
+
 ## Navegacao
 
 - **Scroll horizontal** com CSS snap
@@ -186,9 +213,10 @@ O background usa React Three Fiber com:
 ## Documento de Negocio
 
 Ver `public/docs/CONTEUDO.md` para:
-- Analise de gargalos (6 problemas identificados)
-- Detalhamento das 3 solucoes
-- Fluxos operacionais
-- Metricas e KPIs esperados
-- Plano de implementacao
-- Breakdown de investimento
+- Diagnostico: 18 vendedores, gargalos de fila, onde a receita se perde
+- 5 frentes de agentes especializados por jornada
+- Ferramentas: CRM + Dashboard com integracao Fortix
+- KPIs: SLA <3min, distribuicao equilibrada, recovery de eventos
+- Investimento: valores "sob consulta" (personalizados apos diagnostico)
+- Governanca WhatsApp: controle de limites, qualidade, opt-out
+- Cronograma: 4 fases de implementacao

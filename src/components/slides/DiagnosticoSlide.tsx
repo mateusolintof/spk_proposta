@@ -1,20 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { AlertTriangle, Clock, TrendingDown } from "lucide-react";
+import { AlertTriangle, Clock, TrendingDown, Users, Calendar, Receipt } from "lucide-react";
 import SlideShell from "@/components/ui/SlideShell";
 import GaugeChart from "@/components/ui/GaugeChart";
-
-const coverage = { noResponse: 64, responded: 36 };
-const conversion = { current: 5, projected: 11 };
 
 export default function DiagnosticoSlide() {
   return (
     <SlideShell
       eyebrow="Diagnóstico & Cenário"
       eyebrowColor="warning"
-      title="Análise de Eficiência & Gargalos"
-      subtitle="Um diagnóstico explicativo do funil para mostrar onde a receita está escapando."
+      title="Onde a Receita Está Escapando"
+      subtitle="Diagnóstico da operação de televendas com 18 vendedores e 12-15 mil mensagens/mês."
       size="compact"
       background={
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-900/10 via-transparent to-transparent pointer-events-none" />
@@ -27,7 +24,7 @@ export default function DiagnosticoSlide() {
               01
             </span>
             <h3 className="text-lg font-semibold text-white">
-              Diagnóstico Atual (base 500 leads)
+              Gargalos Identificados
             </h3>
           </div>
 
@@ -35,36 +32,36 @@ export default function DiagnosticoSlide() {
             <div className="space-y-4">
               <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
                 <p className="text-xs uppercase tracking-[0.2em] text-amber-300/80">
-                  O que está acontecendo
+                  Problema Principal
                 </p>
                 <p className="mt-2 text-body text-white/60">
-                  O gargalo é velocidade de resposta e cobertura. O lead chega,
-                  mas o tempo de retorno não acompanha o volume.
+                  Sem fila inteligente, o lead fica preso se o vendedor escolhido não atende.
+                  Não há rotação automática nem SLA controlado.
                 </p>
                 <div className="mt-4 space-y-3">
                   <div className="flex items-start gap-3">
                     <div className="rounded-lg bg-white/5 p-2 text-amber-300">
-                      <Clock className="h-4 w-4" />
+                      <Users className="h-4 w-4" />
                     </div>
                     <div>
                       <p className="text-body font-semibold text-white">
-                        64% chegam fora do horário
+                        18 vendedores, distribuição desigual
                       </p>
                       <p className="text-xs text-white/50">
-                        ~320 leads/mês sem resposta imediata
+                        Alguns sobrecarregados, outros ociosos
                       </p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <div className="rounded-lg bg-white/5 p-2 text-red-400">
-                      <TrendingDown className="h-4 w-4" />
+                      <Clock className="h-4 w-4" />
                     </div>
                     <div>
                       <p className="text-body font-semibold text-white">
-                        Conversão atual de 5%
+                        Lead preso em vendedor ocupado
                       </p>
                       <p className="text-xs text-white/50">
-                        Parte do interesse esfria antes de ser atendido
+                        Sem rotação, o cliente espera ou desiste
                       </p>
                     </div>
                   </div>
@@ -74,10 +71,10 @@ export default function DiagnosticoSlide() {
                     </div>
                     <div>
                       <p className="text-body font-semibold text-white">
-                        Oportunidades perdidas
+                        SLA sem controle
                       </p>
                       <p className="text-xs text-white/50">
-                        Lead sem retorno rápido tende a migrar
+                        Tempo de primeira resposta indefinido
                       </p>
                     </div>
                   </div>
@@ -86,11 +83,11 @@ export default function DiagnosticoSlide() {
 
               <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
                 <p className="text-xs uppercase tracking-[0.2em] text-white/40">
-                  Leitura do funil
+                  Sistema Atual (Fortix)
                 </p>
                 <p className="mt-2 text-body text-white/60">
-                  A mídia gera demanda, mas o atendimento não converte no timing
-                  ideal. O problema é capacidade, não volume.
+                  O cliente escolhe o vendedor em uma lista. Se esse vendedor não responder,
+                  o lead fica parado — sem fallback automático.
                 </p>
               </div>
             </div>
@@ -98,50 +95,63 @@ export default function DiagnosticoSlide() {
             <div className="space-y-4">
               <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
                 <p className="text-xs uppercase tracking-[0.2em] text-white/40">
-                  Cobertura de atendimento
+                  Onde a receita se perde
                 </p>
-                <div className="mt-3 h-3 w-full overflow-hidden rounded-full bg-white/10 flex">
-                  <div
-                    className="h-full bg-amber-400/80"
-                    style={{ width: `${coverage.noResponse}%` }}
-                  />
-                  <div
-                    className="h-full bg-emerald-400/70"
-                    style={{ width: `${coverage.responded}%` }}
-                  />
+                <div className="mt-4 space-y-3">
+                  <div className="flex items-start gap-3">
+                    <div className="rounded-lg bg-red-500/10 p-2 text-red-400">
+                      <TrendingDown className="h-4 w-4" />
+                    </div>
+                    <div>
+                      <p className="text-body font-semibold text-white">
+                        Lead sem resposta em 5+ min
+                      </p>
+                      <p className="text-xs text-white/50">
+                        Esfria e busca concorrente
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="rounded-lg bg-amber-500/10 p-2 text-amber-400">
+                      <Calendar className="h-4 w-4" />
+                    </div>
+                    <div>
+                      <p className="text-body font-semibold text-white">
+                        Eventos: follow-up leva ~30 dias
+                      </p>
+                      <p className="text-xs text-white/50">
+                        ~1000 leads por evento desperdiçados
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="rounded-lg bg-red-500/10 p-2 text-red-400">
+                      <Receipt className="h-4 w-4" />
+                    </div>
+                    <div>
+                      <p className="text-body font-semibold text-white">
+                        Cobrança: risco de perda de número
+                      </p>
+                      <p className="text-xs text-white/50">
+                        ~1000 mensagens/dia sem governança
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <div className="mt-2 flex items-center justify-between text-xs text-white/50">
-                  <span>64% sem resposta rápida</span>
-                  <span>36% respondidos</span>
-                </div>
-                <p className="mt-3 text-body text-white/60">
-                  O lead precisa de resposta em minutos, não horas.
-                </p>
               </div>
 
               <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
                 <p className="text-xs uppercase tracking-[0.2em] text-white/40">
-                  Conversão no funil
+                  Volume mensal
                 </p>
-                <div className="mt-4 flex items-end gap-4 h-24">
-                  <div className="flex flex-col items-center gap-2">
-                    <div
-                      className="w-10 rounded-xl border border-amber-400/40 bg-amber-400/20"
-                      style={{ height: `${conversion.current * 6}px` }}
-                    />
-                    <span className="text-xs text-white/50">Atual 5%</span>
-                  </div>
-                  <div className="flex flex-col items-center gap-2">
-                    <div
-                      className="w-10 rounded-xl border border-emerald-400/40 bg-emerald-400/20"
-                      style={{ height: `${conversion.projected * 6}px` }}
-                    />
-                    <span className="text-xs text-white/50">Meta 10-12%</span>
-                  </div>
+                <div className="mt-3 flex flex-wrap gap-2 text-body text-white/70">
+                  <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
+                    12-15k mensagens/mês
+                  </span>
+                  <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
+                    18 vendedores
+                  </span>
                 </div>
-                <p className="mt-3 text-body text-white/60">
-                  A queda vem de atrasos, triagem manual e falta de cadência.
-                </p>
               </div>
             </div>
           </div>
@@ -153,7 +163,7 @@ export default function DiagnosticoSlide() {
               02
             </span>
             <h3 className="text-lg font-semibold text-white">
-              Projeção com IA (R$ 3.000/mês em mídia)
+              Projeção com Orquestração Inteligente
             </h3>
           </div>
 
@@ -162,57 +172,43 @@ export default function DiagnosticoSlide() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
                   <GaugeChart
-                    value={14}
-                    max={50}
-                    label="Cenário Atual (5%)"
-                    sublabel="~14 vendas/mês"
+                    value={25}
+                    max={100}
+                    label="SLA Atual"
+                    sublabel="Sem controle"
                     color="amber"
                   />
                   <p className="mt-2 text-xs text-white/50">
-                    Conversão limitada por resposta lenta e triagem manual.
+                    Tempo de resposta indefinido, depende do vendedor.
                   </p>
                 </div>
                 <div className="rounded-2xl border border-emerald-500/20 bg-emerald-500/10 p-4">
                   <GaugeChart
-                    value={32}
-                    max={50}
-                    label="Cenário IA (10-12%)"
-                    sublabel="~32 vendas/mês"
+                    value={90}
+                    max={100}
+                    label="SLA com IA"
+                    sublabel="< 3 min"
                     color="emerald"
                   />
                   <p className="mt-2 text-xs text-white/60">
-                    Atendimento 24/7 + qualificação automática acelera o funil.
+                    Fila inteligente + agente SDR garante resposta imediata.
                   </p>
                 </div>
               </div>
 
               <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
                 <p className="text-xs uppercase tracking-[0.2em] text-white/40">
-                  Base de investimento
+                  O que muda com orquestração
                 </p>
-                <div className="mt-3 flex flex-wrap gap-2 text-body text-white/70">
-                  <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
-                    Custo/lead ~R$11
-                  </span>
-                  <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
-                    ~272 leads/mês
-                  </span>
-                </div>
+                <ul className="mt-3 space-y-2 text-body text-white/60">
+                  <li>Lead nunca fica preso — rotação automática em 5 min</li>
+                  <li>Distribuição equilibrada entre os 18 vendedores</li>
+                  <li>Eventos: follow-up em 24h, não 30 dias</li>
+                </ul>
               </div>
             </div>
 
             <div className="space-y-4">
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-                <p className="text-xs uppercase tracking-[0.2em] text-white/40">
-                  Como a IA muda o cenário
-                </p>
-                <ul className="mt-3 space-y-2 text-body text-white/60">
-                  <li>Atendimento 24/7 reduz o tempo de espera.</li>
-                  <li>Qualificação automática elimina curiosos.</li>
-                  <li>Handoff rápido entrega lead quente ao vendedor.</li>
-                </ul>
-              </div>
-
               <motion.div
                 className="bg-emerald-500/10 border border-emerald-500/30 rounded-2xl p-5 flex items-center justify-between"
                 initial={{ opacity: 0, scale: 0.96 }}
@@ -221,15 +217,36 @@ export default function DiagnosticoSlide() {
                 transition={{ delay: 0.2 }}
               >
                 <div>
-                  <p className="text-emerald-400 font-bold text-3xl">+128%</p>
+                  <p className="text-emerald-400 font-bold text-3xl">&lt;3 min</p>
                   <p className="text-white/60 text-body">
-                    Aumento projetado em vendas
+                    SLA de primeira resposta
                   </p>
                 </div>
                 <div className="text-right">
-                  <p className="text-white/40 text-xs">De 14 para 32 vendas</p>
+                  <p className="text-white/40 text-xs">Meta com orquestração</p>
                   <p className="text-emerald-400 text-body font-medium">
-                    +18 vendas/mês
+                    100% dos leads
+                  </p>
+                </div>
+              </motion.div>
+
+              <motion.div
+                className="bg-cyan-500/10 border border-cyan-500/30 rounded-2xl p-5 flex items-center justify-between"
+                initial={{ opacity: 0, scale: 0.96 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.25 }}
+              >
+                <div>
+                  <p className="text-cyan-400 font-bold text-3xl">24h</p>
+                  <p className="text-white/60 text-body">
+                    Follow-up de eventos
+                  </p>
+                </div>
+                <div className="text-right">
+                  <p className="text-white/40 text-xs">Vs. 30 dias atual</p>
+                  <p className="text-cyan-400 text-body font-medium">
+                    30x mais rápido
                   </p>
                 </div>
               </motion.div>
@@ -239,13 +256,14 @@ export default function DiagnosticoSlide() {
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.25 }}
+                transition={{ delay: 0.3 }}
               >
                 <p className="text-red-400 text-xs uppercase tracking-wider mb-1">
-                  Risco se nada for feito
+                  Custo de não agir
                 </p>
                 <p className="text-white/70 text-body">
-                  Sem IA: ~174 leads/mês continuarão sem resposta imediata.
+                  Sem orquestração: leads presos, eventos desperdiçados,
+                  cobrança arriscada e vendedores sobrecarregados.
                 </p>
               </motion.div>
             </div>
@@ -261,12 +279,11 @@ export default function DiagnosticoSlide() {
         >
           <p className="text-white/80 text-body leading-relaxed">
             <strong className="text-[#00FF94]">Diagnóstico:</strong> o gargalo
-            é falta de capacidade de processamento.{" "}
+            é falta de orquestração e governança.{" "}
             <strong className="text-[#00E5FF]">
-              A implementação dos agentes
+              A fila inteligente + agentes especializados
             </strong>{" "}
-            recupera a eficiência dos 64% de leads que hoje ficam sem
-            atendimento imediato.
+            eliminam o problema de lead preso, garantem SLA e protegem a operação de cobrança.
           </p>
         </motion.div>
       </div>

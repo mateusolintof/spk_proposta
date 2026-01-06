@@ -9,7 +9,7 @@ import {
   Clock,
   HelpCircle,
   Lock,
-  RefreshCw,
+  MessageSquare,
 } from "lucide-react";
 import SlideShell from "@/components/ui/SlideShell";
 
@@ -21,41 +21,41 @@ interface FAQItem {
 
 const faqItems: FAQItem[] = [
   {
-    icon: <Shield className="w-5 h-5" />,
-    question:
-      "Os dados dos clientes estão seguros? A solução é compatível com a LGPD?",
-    answer:
-      "A solução é desenhada com boas práticas de segurança e privacidade, alinhadas à LGPD (ex.: criptografia em trânsito e em repouso, controle de acesso, trilhas de auditoria e políticas de retenção). No kick-off, alinhamos governança de dados (exportação, retenção e exclusão) e os termos de tratamento conforme o escopo definido.",
-  },
-  {
     icon: <Zap className="w-5 h-5" />,
-    question: "Como funciona a integração com nosso ERP e canais atuais?",
+    question:
+      "Como integra com o Fortix e WhatsApp API?",
     answer:
-      "Desenvolvemos integrações sob medida para cada operação. Conectamos ao seu ERP/CRM e canais (ex.: WhatsApp) via API e/ou webhooks, sem necessidade de substituir o sistema atual. No kick-off, mapeamos os eventos e dados necessários (cadastro, catálogo, status do pedido, pagamentos etc.) e validamos juntos o fluxo ideal.",
+      "A integração é feita via API e webhooks, sem substituir o sistema atual. O orquestrador funciona como uma camada acima do Fortix, recebendo os leads e distribuindo inteligentemente entre os vendedores. A comunicação com o cliente continua pelo WhatsApp Business API, com governança de limites e qualidade.",
   },
   {
-    icon: <RefreshCw className="w-5 h-5" />,
-    question: "E se os resultados não forem os esperados? Existe garantia?",
+    icon: <Shield className="w-5 h-5" />,
+    question: "Como evitamos perda de número/limite no WhatsApp?",
     answer:
-      "A fase de Validação (piloto) existe justamente para ajustar fluxos, mensagens e regras de handoff antes do Go-Live. Definimos metas e critérios no kick-off e acompanhamos os KPIs com a equipe. Se o cenário real exigir mudanças de escopo/integrações, replanejamos para manter o projeto viável e orientado a resultado.",
-  },
-  {
-    icon: <Clock className="w-5 h-5" />,
-    question: "Quanto tempo leva para implementar e ver resultados?",
-    answer:
-      "Em geral, a implementação leva de 4 a 6 semanas, dependendo da complexidade das integrações. Os primeiros ganhos (tempo de resposta e captura de leads fora do horário) aparecem nas primeiras semanas. Ganhos consolidados de conversão e recuperação tendem a aparecer após o período de estabilização e ajustes do piloto.",
-  },
-  {
-    icon: <HelpCircle className="w-5 h-5" />,
-    question: "Preciso de conhecimento técnico para operar o sistema?",
-    answer:
-      "Não! O sistema foi desenhado para ser gerenciado por qualquer pessoa da sua equipe. Oferecemos treinamento completo durante a implementação e suporte contínuo. Alterações nos fluxos, mensagens e configurações podem ser feitas através de uma interface amigável, sem necessidade de código.",
+      "A solução inclui governança de WhatsApp com: controle de volume de envio (não ultrapassa limites da Meta), opt-out respeitado automaticamente, múltiplos canais de fallback (SMS, e-mail), e templates aprovados. Também monitoramos a qualidade do número e alertamos sobre riscos antes que virem problemas.",
   },
   {
     icon: <Lock className="w-5 h-5" />,
-    question: "Posso cancelar o contrato a qualquer momento?",
+    question: "Como fica LGPD e auditoria?",
     answer:
-      "Os termos comerciais (setup, mensalidade e prazo) são definidos na proposta e podem ser ajustados conforme o nível de integração e o esforço de implantação. O importante é garantir tempo suficiente para implementar, validar e estabilizar a operação — e manter transparência de condições desde o início.",
+      "A solução é desenhada com boas práticas de privacidade: criptografia em trânsito e em repouso, controle de acesso por perfil, trilhas de auditoria completas e políticas de retenção configuráveis. No kick-off, alinhamos governança de dados (exportação, retenção, exclusão) conforme as políticas da Mercante.",
+  },
+  {
+    icon: <HelpCircle className="w-5 h-5" />,
+    question: "Quem aprova mensagens de cobrança?",
+    answer:
+      "A régua de cobrança tem human-in-loop configurável. Mensagens padrão (lembretes, vencimento) são automatizadas. Negociações de valor, parcelamentos especiais ou clientes sensíveis são escalados automaticamente para o financeiro ou gestor aprovar antes de enviar.",
+  },
+  {
+    icon: <MessageSquare className="w-5 h-5" />,
+    question: "Preciso trocar o Fortix ou o sistema atual?",
+    answer:
+      "Não! O orquestrador funciona como uma camada acima do sistema atual. O Fortix continua sendo usado pela equipe, mas os leads são distribuídos de forma inteligente pelo orquestrador, que também alimenta o CRM próprio com visibilidade de funil, SLA e métricas que talvez o Fortix não ofereça hoje.",
+  },
+  {
+    icon: <Clock className="w-5 h-5" />,
+    question: "Qual o prazo de implementação?",
+    answer:
+      "Em geral, 4 a 8 semanas dependendo da complexidade das integrações. Começamos com um piloto (Fila + SDR) com 1-2 vendedores, expandimos gradualmente e depois adicionamos as outras frentes (eventos, cobrança, recompra). Os primeiros ganhos de SLA aparecem nas primeiras semanas.",
   },
 ];
 
@@ -71,7 +71,7 @@ export default function FAQSlide() {
       eyebrow="FAQ"
       eyebrowColor="default"
       title="Perguntas Frequentes"
-      subtitle="Transparência total sobre segurança, integrações, garantias e prazos."
+      subtitle="Dúvidas sobre integração, governança, LGPD e implementação."
       align="center"
       size="compact"
     >

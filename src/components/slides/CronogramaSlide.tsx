@@ -8,26 +8,26 @@ import SlideShell from "@/components/ui/SlideShell";
 const phases = [
   {
     phase: 1,
-    title: "Kick-off",
-    desc: "Alinhamento inicial e levantamento de requisitos",
+    title: "Imersão",
+    desc: "Diagnóstico de fila + dados + desenho de roteamento entre os 18 vendedores",
     icon: <Handshake className="w-6 h-6" />,
   },
   {
     phase: 2,
-    title: "Desenvolvimento",
-    desc: "Construção dos fluxos e integrações",
+    title: "Piloto",
+    desc: "Core (Fila + SDR) operando com 1-2 vendedores para validação de fluxo",
     icon: <Code className="w-6 h-6" />,
   },
   {
     phase: 3,
-    title: "Validação",
-    desc: "Testes com a equipe e ajustes finais",
+    title: "Rollout",
+    desc: "Expansão para toda equipe + integrações (Fortix, eventos, cobrança)",
     icon: <CheckCircle className="w-6 h-6" />,
   },
   {
     phase: 4,
-    title: "Go-Live",
-    desc: "Lançamento oficial e acompanhamento",
+    title: "Otimização",
+    desc: "Análise de métricas + ativação de recompra e copiloto do vendedor",
     icon: <Rocket className="w-6 h-6" />,
   },
 ];
@@ -87,7 +87,7 @@ export default function CronogramaSlide() {
         viewport={{ once: true }}
         transition={{ delay: 0.6 }}
       >
-        <p className="text-white/60 mb-4">Pronto para transformar seu atendimento?</p>
+        <p className="text-white/60 mb-4">Pronto para orquestrar o atendimento da Mercante?</p>
         <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#00E5FF] to-[#00FF94] rounded-full text-[#02040A] font-semibold">
           <span>Vamos começar</span>
           <Rocket className="w-4 h-4" />

@@ -2,64 +2,67 @@
 
 import { motion } from "framer-motion";
 import {
-  Eye,
-  Calculator,
-  Globe,
-  BookOpen,
+  GitBranch,
+  Clock,
   Shield,
+  Users,
+  BarChart3,
   Check,
-  MessageSquare,
+  Zap,
 } from "lucide-react";
 import SlideShell from "@/components/ui/SlideShell";
 
-const clienteDeseja = [
+const objetivos = [
   {
-    category: "Fluxo Principal",
+    category: "Orquestração Core",
     items: [
-      "Agente SDR Qualificador e Classificador",
-      "Atendimento 24/7 para leads frios",
-      "Handoff inteligente para vendedor humano finalizar",
+      "Fila inteligente com rotação automática entre 18 vendedores",
+      "SLA controlado: primeira resposta em menos de 3 minutos",
+      "Balanceamento de carga equilibrado (fim do vendedor sobrecarregado)",
     ],
   },
   {
-    category: "Requisitos Específicos",
+    category: "Jornadas Especializadas",
     items: [
-      "Leitura de fatura de energia (PDF/Foto) - validar R$ 250 mínimo",
-      "Personalização total - não robô genérico",
-      "Capacidade de cálculos e simulações",
+      "Qualificação 24/7 para leads de televendas",
+      "Follow-up automatizado para eventos (24h, não 30 dias)",
+      "Régua de cobrança com governança WhatsApp",
     ],
   },
   {
-    category: "Agentes Opcionais",
-    items: ["Follow-up (aumentar conversão)", "Pós-vendas (cobranças, NPS)"],
+    category: "Apoio ao Vendedor",
+    items: [
+      "Copiloto interno com contexto e recomendações",
+      "Campanhas de recompra para clientes inativos",
+    ],
   },
 ];
 
-const ferramentas = [
+const diferenciais = [
   {
-    icon: Eye,
-    title: "Visão Computacional (OCR)",
-    desc: "Ler, interpretar e extrair dados de faturas de energia (PDF ou Foto)",
+    icon: GitBranch,
+    title: "Roteamento Inteligente",
+    desc: "Lead nunca fica preso. Fallback automático se vendedor não atender em 5 min.",
   },
   {
-    icon: Calculator,
-    title: "Cérebro Matemático",
-    desc: "Cálculo avançado para simulações, projeção de descontos e financiamento em tempo real",
-  },
-  {
-    icon: Globe,
-    title: "Pesquisas & Validações",
-    desc: "Consulta CPF para restrições + cálculo de score do lead",
-  },
-  {
-    icon: BookOpen,
-    title: "Base de Conhecimento (RAG)",
-    desc: "Treinado nas regras de negócio do cliente. Responde com precisão",
+    icon: Clock,
+    title: "SLA Garantido",
+    desc: "Monitoramento de tempo de resposta com alertas e reatribuição automática.",
   },
   {
     icon: Shield,
-    title: "Integrações & Segurança",
-    desc: "Guardrails para evitar alucinações e invasões de terceiros",
+    title: "Governança WhatsApp",
+    desc: "Limites de envio, opt-out respeitado e múltiplos canais para evitar perda de número.",
+  },
+  {
+    icon: Users,
+    title: "Human-in-Loop",
+    desc: "Escala para humano em negociações sensíveis, valores altos ou clientes especiais.",
+  },
+  {
+    icon: BarChart3,
+    title: "Dashboard de Auditoria",
+    desc: "Visão de funil, SLA, distribuição por vendedor e motivos de perda.",
   },
 ];
 
@@ -68,21 +71,21 @@ export default function ObjetivoProjetoSlide() {
     <SlideShell
       eyebrow="Objetivo do Projeto"
       eyebrowColor="success"
-      title="Solução Desejada × Diferenciais Tecnológicos"
-      subtitle="Validação técnica: o que você precisa e como vamos entregar"
+      title="O Que Vamos Resolver"
+      subtitle="Mapeamento das necessidades da Mercante × capacidade da solução"
       size="compact"
     >
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full">
-        {/* Coluna Esquerda: O Que o Cliente Deseja */}
+        {/* Coluna Esquerda: Objetivos */}
         <div className="space-y-5">
           <div className="flex items-center gap-3 mb-4">
             <div className="w-1.5 h-7 bg-amber-500 rounded-full" />
             <h3 className="text-lg font-semibold text-white">
-              O Que o Cliente Deseja
+              Objetivos da Mercante
             </h3>
           </div>
 
-          {clienteDeseja.map((section, idx) => (
+          {objetivos.map((section, idx) => (
             <motion.div
               key={section.category}
               className="bg-white/5 border border-white/10 rounded-2xl p-5"
@@ -109,12 +112,12 @@ export default function ObjetivoProjetoSlide() {
           ))}
         </div>
 
-        {/* Coluna Direita: Capacidade e Diferenciais */}
+        {/* Coluna Direita: Diferenciais */}
         <div className="space-y-5">
           <div className="flex items-center gap-3 mb-4">
             <div className="w-1.5 h-7 bg-[#00FF94] rounded-full" />
             <h3 className="text-lg font-semibold text-white">
-              Capacidade e Diferenciais
+              Diferenciais da Solução
             </h3>
           </div>
 
@@ -126,23 +129,24 @@ export default function ObjetivoProjetoSlide() {
             viewport={{ once: true }}
           >
             <div className="flex items-center gap-3 mb-3">
-              <MessageSquare className="w-5 h-5 text-[#00FF94]" />
+              <Zap className="w-5 h-5 text-[#00FF94]" />
               <p className="text-xs uppercase tracking-widest text-[#00FF94]">
-                Entrega Principal
+                Proposta Central
               </p>
             </div>
             <p className="text-white/80 text-body leading-relaxed">
-              Agente SDR humanizado que qualifica leads, classifica por score e
-              realiza handoff para vendedor humano finalizar a venda.
+              Orquestrador de atendimento que distribui leads entre 18 vendedores
+              com SLA controlado, agentes especializados por jornada e governança
+              para proteger a operação de cobrança.
             </p>
           </motion.div>
 
-          {/* 5 Cards de Ferramentas */}
+          {/* 5 Cards de Diferenciais */}
           <div className="space-y-2.5">
             <p className="text-xs uppercase tracking-widest text-white/50 mb-2">
-              Ferramentas Integradas
+              Capacidades Integradas
             </p>
-            {ferramentas.map((tool, idx) => (
+            {diferenciais.map((tool, idx) => (
               <motion.div
                 key={tool.title}
                 className="bg-white/5 border border-white/10 rounded-xl p-3.5 flex items-start gap-3 hover:border-[#00FF94]/30 transition-colors"

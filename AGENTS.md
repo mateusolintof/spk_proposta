@@ -1,12 +1,23 @@
-# Modelo de Proposta Comercial — Guia de Desenvolvimento
+# Proposta Comercial Mercante Distribuidora — Guia de Desenvolvimento
 
 ## Visao Geral
 
-Apresentacao horizontal interativa para Proposta Comercial da minha agência de Tecnologia - Convert.AI , focada em Agentes de IA para Atendimento Comercial e outras soluções.
+Apresentacao horizontal interativa para Proposta Comercial da Convert.AI, personalizada para **Mercante Distribuidora** — focada em orquestracao inteligente de atendimento comercial para televendas.
 
-**Cliente:** Modelo base
+**Cliente:** Mercante Distribuidora
 **Documento de negocio:** `public/docs/CONTEUDO.md`
 **Porta de desenvolvimento:** 3001
+
+## Contexto do Cliente
+
+| Dado | Valor |
+|------|-------|
+| Time de televendas | 18 vendedores |
+| Volume mensal | 12-15 mil mensagens |
+| Sistema atual | Fortix (cliente escolhe vendedor em lista) |
+| Gargalo principal | Fila sem rotacao (lead preso se vendedor nao responde) |
+| Eventos | ~1000 leads por evento, follow-up leva ~30 dias |
+| Cobranca | ~1000 mensagens/dia, risco de perda de numero WhatsApp |
 
 ## Stack Tecnica
 
@@ -28,7 +39,7 @@ Apresentacao horizontal interativa para Proposta Comercial da minha agência de 
 ```bash
 npm install
 npm run dev             # webpack dev (http://localhost:3001)
-npm run dev:turbo       # turbopack dev (opcinal, requer acesso)
+npm run dev:turbo       # turbopack dev (opcional, requer acesso)
 npm run build           # producao (webpack)
 npm run build:turbo     # producao (turbopack, rede requerida)
 npm start -p 3001       # Servir build final
@@ -48,15 +59,15 @@ npm start -p 3001       # Servir build final
 
 ```
 src/components/slides/
-├── IntroSlide.tsx           # Hero com logo Convert.AI
-├── DiagnosticoSlide.tsx     # Diagnostico explicativo + mini graficos
-├── ObjetivoProjetoSlide.tsx # Requisitos e diferencais tecnicos
-├── SolucaoSlide.tsx         # 3 agentes IA (abre AgentModal)
+├── IntroSlide.tsx           # Hero "Orquestracao Inteligente de Atendimento Comercial"
+├── DiagnosticoSlide.tsx     # 18 vendedores, gargalos de fila, SLA
+├── ObjetivoProjetoSlide.tsx # Objetivos Mercante e diferenciais
+├── SolucaoSlide.tsx         # 5 agentes IA orbitais (abre AgentModal)
 ├── FerramentasSlide.tsx     # CRM + Dashboard (abre modais de preview)
-├── GanhosSlide.tsx          # Resultados + Viabilidade (calculadoras)
-├── InvestimentoSlide.tsx    # Planos + entregaveis inclusos
-├── FAQSlide.tsx             # 6 perguntas frequentes (accordion)
-└── CronogramaSlide.tsx      # 4 fases: Kick-off, Dev, Validacao, Go-Live
+├── GanhosSlide.tsx          # SLA <3min, distribuicao, eventos 24h
+├── InvestimentoSlide.tsx    # 5 frentes + pacote completo (sob consulta)
+├── FAQSlide.tsx             # 6 perguntas sobre Fortix, WhatsApp, LGPD
+└── CronogramaSlide.tsx      # 4 fases: Imersao, Piloto, Rollout, Otimizacao
 ```
 
 ### SlideShell Props
@@ -79,7 +90,7 @@ interface SlideShellProps {
 #### Tipos (`src/types/modal.ts`)
 
 ```typescript
-export type AgentType = "sdr" | "noshow" | "nps";
+export type AgentType = "fila_sdr" | "closer" | "eventos" | "cobranca" | "recompra_copiloto";
 
 export type ModalKind =
   | { type: "agent"; agent: AgentType }
@@ -96,13 +107,13 @@ export type ModalKind =
 
 | Modal | Arquivo | Aberto por | Descricao |
 |-------|---------|------------|-----------|
-| AgentModal | `AgentModal.tsx` | SolucaoSlide | Detalhes dos 3 agentes IA |
+| AgentModal | `AgentModal.tsx` | SolucaoSlide | Detalhes dos 5 agentes IA |
 | CRMPreviewModal | `CRMPreviewModal.tsx` | FerramentasSlide | Preview interativo do CRM |
 | DashboardPreviewModal | `DashboardPreviewModal.tsx` | FerramentasSlide | Preview do Dashboard |
-| ROICalculatorModal | `ROICalculatorModal.tsx` | GanhosSlide | Calculadora interativa |
-| CostReductionModal | `CostReductionModal.tsx` | GanhosSlide | Simulador de economia |
-| GainsModal | `GainsModal.tsx` | GanhosSlide | Ganhos operacionais |
-| IntelligenceModal | `IntelligenceModal.tsx` | GanhosSlide | Inteligencia de dados |
+| ROICalculatorModal | `ROICalculatorModal.tsx` | GanhosSlide | Simulador de impacto (SLA) |
+| CostReductionModal | `CostReductionModal.tsx` | GanhosSlide | Ganho de capacidade por vendedor |
+| GainsModal | `GainsModal.tsx` | GanhosSlide | KPIs operacionais Mercante |
+| IntelligenceModal | `IntelligenceModal.tsx` | GanhosSlide | Inteligencia de dados (canais, abandono) |
 
 #### Sub-componentes de Modais
 
@@ -110,8 +121,8 @@ export type ModalKind =
 src/components/modals/
 ├── ModalWrapper.tsx              # Base wrapper com overlay e animacoes
 ├── agents/
-│   ├── RadialCapabilityDiagram.tsx  # Infografico em etapas por agente
-│   └── AgentFlowDiagram.tsx         # Fluxograma interativo (XYFlow)
+│   ├── RadialCapabilityDiagram.tsx  # Infografico em etapas por agente (5 agentes)
+│   └── AgentFlowDiagram.tsx         # Fluxograma interativo (XYFlow, 5 agentes)
 ├── crm/
 │   ├── CRMDashboardView.tsx      # Visao geral do CRM
 │   ├── CRMContactsView.tsx       # Lista de contatos/leads
@@ -124,16 +135,18 @@ src/components/modals/
     └── DashInsightsView.tsx      # Insights e recomendacoes
 ```
 
-### Agentes IA
+### Agentes IA (5 frentes)
 
 | ID | Nome | Funcao | Cor |
 |----|------|--------|-----|
-| sdr | SDR & Qualificacao | Qualificacao e conversao 24/7 | Cyan |
-| noshow | Follow-up Automatico | Cadencia e recuperacao de conversoes | Cyan |
-| nps | Pesquisa & NPS | Coleta de feedback pos-compra | Verde |
+| fila_sdr | Fila + SDR | Router de atendimento com qualificacao 24/7 | Cyan (#00E5FF) |
+| closer | Closer Assist | Copiloto do vendedor para fechamento | Verde (#00FF94) |
+| eventos | Agente Eventos | Follow-up automatizado para feiras/eventos | Ouro (#FFD700) |
+| cobranca | Agente Cobranca | Regua de cobranca com governanca WhatsApp | Vermelho (#FF6B6B) |
+| recompra_copiloto | Recompra & Copiloto | Reativacao de clientes + assistente interno | Roxo (#A855F7) |
 
 Cada agente no AgentModal exibe:
-- Infografico em etapas (Entrada → Analise → Acao ou equivalente)
+- Infografico em etapas (Entrada → Processamento → Acao)
 - Fluxograma interativo com XYFlow
 - Lista de beneficios
 - Metricas esperadas
@@ -145,6 +158,13 @@ Cada agente no AgentModal exibe:
 --background: #02040A      /* Fundo escuro */
 --accent-tech: #00E5FF     /* Cyan tecnologico */
 --accent-success: #00FF94  /* Verde sucesso */
+
+/* Cores dos agentes */
+--fila-sdr: #00E5FF        /* Cyan */
+--closer: #00FF94          /* Verde */
+--eventos: #FFD700         /* Ouro */
+--cobranca: #FF6B6B        /* Vermelho */
+--recompra: #A855F7        /* Roxo */
 
 /* Opacidades padrao */
 bg-white/5                 /* Cards e containers */
@@ -225,12 +245,14 @@ const [activeView, setActiveView] = useState<ViewType>("dashboard");
 - [x] Background 3D integrado
 - [x] Navegacao horizontal com snap
 - [x] 7 modais interativos
-- [x] AgentModal com infografico em etapas e fluxograma
+- [x] AgentModal com 5 agentes Mercante
+- [x] Infografico em etapas e fluxograma por agente
 - [x] CRM Preview com 4 abas
 - [x] Dashboard Preview com 4 abas
-- [x] Calculadoras de ROI e economia
-- [x] GainsModal e IntelligenceModal com graficos
-- [x] FAQSlide com accordion
+- [x] Simulador de impacto (SLA e capacidade)
+- [x] GainsModal e IntelligenceModal com metricas Mercante
+- [x] FAQSlide com perguntas sobre Fortix/WhatsApp/LGPD
+- [x] Investimento com valores "sob consulta"
 - [x] Animacoes Framer Motion
 - [x] Responsivo mobile/desktop
 - [x] Paleta de cores aplicada
@@ -239,9 +261,10 @@ const [activeView, setActiveView] = useState<ViewType>("dashboard");
 
 Ver `public/docs/CONTEUDO.md` para detalhes sobre:
 
-1. **Diagnostico:** gargalos de cobertura e conversao
-2. **Solucoes:** 3 agentes IA especializados
-3. **Ferramentas:** CRM + Dashboard executivo
-4. **Metricas:** KPIs e metas esperadas
-5. **Investimento:** planos por agente + pacote completo
-6. **Cronograma:** 4 fases de implementacao
+1. **Diagnostico:** 18 vendedores, gargalos de fila, SLA sem controle
+2. **Solucoes:** 5 frentes de agentes especializados
+3. **Ferramentas:** CRM + Dashboard executivo com integracao Fortix
+4. **Metricas:** SLA <3min, distribuicao equilibrada, recovery de eventos
+5. **Investimento:** valores "sob consulta" (personalizados apos diagnostico)
+6. **Cronograma:** 4 fases (Imersao, Piloto, Rollout, Otimizacao)
+7. **Governanca WhatsApp:** controle de limites, qualidade, opt-out

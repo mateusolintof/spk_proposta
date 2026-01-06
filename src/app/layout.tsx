@@ -3,9 +3,9 @@ import { Providers } from "./providers";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Agentes de IA & Inteligência Comercial",
+  title: "Proposta Comercial | Mercante Distribuidora | Convert.AI",
   description:
-    "Projeto Modelo Padrão com agentes de IA para atendimento comercial: qualificação de leads, FAQ inteligente, follow-up automático, CRM e painel executivo.",
+    "Orquestração inteligente de atendimento comercial para Mercante Distribuidora: fila inteligente, agentes especializados por jornada, governança WhatsApp e dashboard executivo.",
   icons: { icon: "/favicon.ico" },
 };
 
