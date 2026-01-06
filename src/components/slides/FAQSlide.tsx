@@ -47,7 +47,7 @@ const faqItems: FAQItem[] = [
     icon: <Clock className="w-5 h-5" />,
     question: "Qual o prazo de implementação?",
     answer:
-      "Em geral, 4 a 8 semanas dependendo da complexidade das integrações. Começamos com um piloto com 1-2 vendedores para validar o fluxo, expandimos gradualmente para toda equipe, e depois ativamos as frentes adicionais (eventos, cobrança). Os primeiros resultados aparecem nas primeiras semanas.",
+      "Em geral, 4 a 8 semanas dependendo da complexidade das integrações com o ERP. O projeto segue 4 fases: Imersão (diagnóstico e mapeamento), Desenvolvimento (construção dos agentes e integrações), Testes e Validação (ambiente controlado), e Go-Live (lançamento com acompanhamento). Trabalhamos de forma iterativa para entregas rápidas.",
   },
 ];
 
