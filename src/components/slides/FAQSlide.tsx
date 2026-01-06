@@ -5,14 +5,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   ChevronDown,
   Shield,
-  Zap,
   Clock,
-  HelpCircle,
-  Lock,
   MessageSquare,
   DollarSign,
   Code,
-  Receipt,
 } from "lucide-react";
 import SlideShell from "@/components/ui/SlideShell";
 
@@ -33,13 +29,7 @@ const faqItems: FAQItem[] = [
     icon: <MessageSquare className="w-5 h-5" />,
     question: "Como funciona o custo da API Oficial da Meta?",
     answer:
-      "Para vendas e mensagens de relacionamento com o cliente, o custo da API da Meta já está embutido no valor mensal. Porém, para campanhas de marketing, promoções e disparos em massa, o custo da API é repassado separadamente conforme consumo (~R$ 0,30 a 0,50 por conversa). A solução de cobrança também não inclui o custo da API — este é cobrado à parte.",
-  },
-  {
-    icon: <Receipt className="w-5 h-5" />,
-    question: "O Agente de Cobrança tem custo de API separado?",
-    answer:
-      "Sim. O Agente de Cobrança (R$ 1.000/mês) não inclui os custos da API Oficial da Meta. Como cobrança envolve envio proativo de mensagens, o custo da API é repassado conforme o volume de disparos. Isso garante transparência e evita surpresas na fatura.",
+      "Para vendas e mensagens de relacionamento com o cliente, o custo da API da Meta já está embutido no valor mensal. Porém, para campanhas de marketing, promoções e disparos em massa, o custo da API é repassado separadamente conforme consumo (~R$ 0,30 a 0,50 por conversa).",
   },
   {
     icon: <Code className="w-5 h-5" />,

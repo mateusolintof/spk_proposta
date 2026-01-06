@@ -238,13 +238,7 @@ export const faqItems: FAQItem[] = [
     iconName: "MessageSquare",
     question: "Como funciona o custo da API Oficial da Meta?",
     answer:
-      "Para vendas e mensagens de relacionamento com o cliente, o custo da API da Meta ja esta embutido no valor mensal. Porem, para campanhas de marketing, promocoes e disparos em massa, o custo da API e repassado separadamente conforme consumo (~R$ 0,30 a 0,50 por conversa). A solucao de cobranca tambem nao inclui o custo da API — este e cobrado a parte.",
-  },
-  {
-    iconName: "Receipt",
-    question: "O Agente de Cobranca tem custo de API separado?",
-    answer:
-      "Sim. O Agente de Cobranca (R$ 1.000/mes) nao inclui os custos da API Oficial da Meta. Como cobranca envolve envio proativo de mensagens, o custo da API e repassado conforme o volume de disparos. Isso garante transparencia e evita surpresas na fatura.",
+      "Para vendas e mensagens de relacionamento com o cliente, o custo da API da Meta ja esta embutido no valor mensal. Porem, para campanhas de marketing, promocoes e disparos em massa, o custo da API e repassado separadamente conforme consumo (~R$ 0,30 a 0,50 por conversa).",
   },
   {
     iconName: "Code",
@@ -269,7 +263,6 @@ export const faqItems: FAQItem[] = [
 export const faqIcons = {
   DollarSign,
   MessageSquare,
-  Receipt,
   Code,
   Shield,
   Clock,
