@@ -14,20 +14,20 @@ const phases = [
   },
   {
     phase: 2,
-    title: "Piloto",
-    desc: "Agente de Vendas + Inbox operando com 1-2 vendedores para validação do fluxo e integrações",
+    title: "Desenvolvimento",
+    desc: "Construção dos agentes, integrações com ERP e configuração da plataforma de atendimento",
     icon: <Code className="w-6 h-6" />,
   },
   {
     phase: 3,
-    title: "Rollout",
-    desc: "Expansão para toda equipe de vendas + ativação dos agentes de Eventos e Cobrança",
+    title: "Testes e Validação",
+    desc: "Validação dos fluxos em ambiente controlado com ajustes antes do lançamento",
     icon: <CheckCircle className="w-6 h-6" />,
   },
   {
     phase: 4,
-    title: "Otimização",
-    desc: "Análise de métricas, ajustes de prompts e melhorias contínuas baseadas em dados reais",
+    title: "Go-Live",
+    desc: "Lançamento para a equipe de vendas com acompanhamento e otimizações contínuas",
     icon: <Rocket className="w-6 h-6" />,
   },
 ];

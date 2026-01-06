@@ -288,20 +288,20 @@ export const phases: Phase[] = [
   },
   {
     phase: 2,
-    title: "Piloto",
-    desc: "Agente de Vendas + Inbox operando com 1-2 vendedores para validacao do fluxo e integracoes",
+    title: "Desenvolvimento",
+    desc: "Construcao dos agentes, integracoes com ERP e configuracao da plataforma de atendimento",
     iconName: "Code",
   },
   {
     phase: 3,
-    title: "Rollout",
-    desc: "Expansao para toda equipe de vendas + ativacao dos agentes de Eventos e Cobranca",
+    title: "Testes e Validacao",
+    desc: "Validacao dos fluxos em ambiente controlado com ajustes antes do lancamento",
     iconName: "CheckCircle",
   },
   {
     phase: 4,
-    title: "Otimizacao",
-    desc: "Analise de metricas, ajustes de prompts e melhorias continuas baseadas em dados reais",
+    title: "Go-Live",
+    desc: "Lancamento para a equipe de vendas com acompanhamento e otimizacoes continuas",
     iconName: "Rocket",
   },
 ];
