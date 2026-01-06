@@ -332,6 +332,7 @@ export default function InvestimentoSlide() {
                   { icon: Database, text: "Banco de Dados" },
                   { icon: Server, text: "Infraestrutura" },
                   { icon: Wrench, text: "Manutenção + Suporte" },
+                  { icon: MessageSquareMore, text: "API Meta (vendas e relacionamento)" },
                 ].map((item, index) => (
                   <div
                     key={index}
@@ -354,10 +355,10 @@ export default function InvestimentoSlide() {
               </div>
               <div className="bg-[#FFD700]/5 border border-[#FFD700]/20 rounded-lg p-3">
                 <p className="text-sm font-medium text-white">
-                  API Oficial da Meta
+                  API Meta — Marketing e Eventos
                 </p>
                 <p className="text-xs text-white/50 mt-1">
-                  ~R$ 0,30 - 0,50 por conversa • Pay-per-use • Faturamento direto
+                  Campanhas, promoções e disparos de feiras/eventos são cobrados à parte (~R$ 0,30 - 0,50/conversa)
                 </p>
               </div>
             </div>
