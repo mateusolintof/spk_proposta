@@ -7,14 +7,9 @@ import {
   Database,
   Cloud,
   Bot,
-  Shield,
-  Zap,
   ArrowDown,
   MessageSquare,
   Link2,
-  Cpu,
-  HardDrive,
-  Lock,
 } from "lucide-react";
 import SectionWrapper from "../SectionWrapper";
 
@@ -83,24 +78,6 @@ const layers = [
       { name: "Claude/OpenAI", desc: "Processamento de linguagem" },
     ],
     tech: ["WhatsApp Cloud API", "REST/Webhooks", "LLM APIs"],
-  },
-];
-
-const securityFeatures = [
-  {
-    icon: Lock,
-    title: "Criptografia",
-    desc: "TLS/HTTPS + dados em repouso",
-  },
-  {
-    icon: Shield,
-    title: "LGPD Compliance",
-    desc: "Auditoria, retencao, exclusao",
-  },
-  {
-    icon: Zap,
-    title: "Alta Disponibilidade",
-    desc: "99.9% uptime garantido",
   },
 ];
 
@@ -223,38 +200,6 @@ export default function ArquiteturaSection() {
                 <p className="text-xs font-medium text-white">{item.tech}</p>
               </div>
             ))}
-          </div>
-        </motion.div>
-
-        {/* Security Features */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <h3 className="text-lg font-semibold text-white mb-4">
-            Seguranca & Compliance
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {securityFeatures.map((feature, index) => {
-              const IconComponent = feature.icon;
-              return (
-                <div
-                  key={index}
-                  className="rounded-xl border border-white/10 bg-white/5 p-4 flex items-start gap-3"
-                >
-                  <div className="p-2 rounded-lg bg-[#00FF94]/10">
-                    <IconComponent className="w-5 h-5 text-[#00FF94]" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium text-white">
-                      {feature.title}
-                    </p>
-                    <p className="text-xs text-white/50">{feature.desc}</p>
-                  </div>
-                </div>
-              );
-            })}
           </div>
         </motion.div>
 

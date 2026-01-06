@@ -1,6 +1,5 @@
 "use client";
 
-import PropostaNav from "./PropostaNav";
 import SolucoesSection from "./sections/SolucoesSection";
 import ArquiteturaSection from "./sections/ArquiteturaSection";
 import InvestimentoSection from "./sections/InvestimentoSection";
@@ -10,11 +9,9 @@ import ProcessoSection from "./sections/ProcessoSection";
 
 export default function PropostaPage() {
   return (
-    <div className="min-h-screen bg-[#02040A] text-white">
-      <PropostaNav />
-
+    <div className="min-h-screen bg-[#02040A] text-white scroll-smooth">
       {/* Hero Header */}
-      <header className="py-16 px-6 border-b border-white/5">
+      <header className="pt-16 pb-12 px-6 border-b border-white/5">
         <div className="max-w-5xl mx-auto">
           <p className="text-[#00E5FF] text-sm uppercase tracking-[0.2em] mb-4">
             Proposta Tecnica
