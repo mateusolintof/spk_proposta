@@ -29,34 +29,30 @@ export default function ComparativoSlide() {
         eyebrow="Comparativo"
         eyebrowColor="success"
         title="Atendimento IA vs Humano"
-        subtitle="Exemplos reais de conversas mostrando a qualidade do atendimento automatizado."
+        subtitle="Clique nas imagens para ampliar"
         align="center"
         size="compact"
       >
-        <div className="w-full">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* IA Column */}
-            <motion.div
-              className="space-y-4"
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
+        <div className="w-full max-w-5xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+            {/* IA Images */}
+            <div className="col-span-2 space-y-3">
               <div className="flex items-center gap-2 justify-center">
-                <div className="p-2 rounded-lg bg-[#00FF94]/20">
-                  <Bot className="w-5 h-5 text-[#00FF94]" />
+                <div className="p-1.5 md:p-2 rounded-lg bg-[#00FF94]/20">
+                  <Bot className="w-4 h-4 md:w-5 md:h-5 text-[#00FF94]" />
                 </div>
-                <h3 className="text-base font-semibold text-white">
+                <h3 className="text-sm md:text-base font-semibold text-white">
                   Atendimento por IA
                 </h3>
               </div>
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-2 gap-2 md:gap-3">
                 {iaImages.map((image, index) => (
                   <motion.button
                     key={index}
                     type="button"
-                    className="relative rounded-xl overflow-hidden border border-white/10 bg-white/5 cursor-pointer group"
+                    className="relative rounded-lg md:rounded-xl overflow-hidden border border-[#00FF94]/30 bg-white/5 cursor-pointer group"
                     whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
                     transition={{ duration: 0.2 }}
                     onClick={() => setSelectedImage(image)}
                   >
@@ -66,63 +62,31 @@ export default function ComparativoSlide() {
                       className="w-full h-auto"
                     />
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-center justify-center">
-                      <ZoomIn className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <ZoomIn className="w-6 h-6 md:w-8 md:h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
                     </div>
                   </motion.button>
                 ))}
               </div>
+            </div>
 
-              {/* IA Analysis */}
-              <motion.div
-                className="rounded-xl border border-[#00FF94]/20 bg-[#00FF94]/5 p-4 space-y-3"
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-              >
-                <div>
-                  <p className="text-[11px] font-semibold text-[#00FF94] uppercase tracking-wider mb-1">Tom</p>
-                  <p className="text-xs text-white/70">Profissional mas acolhedor. Parece uma pessoa paciente que realmente quer ouvir.</p>
-                </div>
-                <div>
-                  <p className="text-[11px] font-semibold text-[#00FF94] uppercase tracking-wider mb-1">Linguagem</p>
-                  <ul className="text-xs text-white/70 space-y-0.5">
-                    <li>• Usa conectivos (&quot;E você já tentou...&quot;, &quot;Quero entender um pouco...&quot;)</li>
-                    <li>• Vocabulário cuidadoso (&quot;histórico&quot;, &quot;acompanhamento médico&quot;)</li>
-                  </ul>
-                </div>
-                <div>
-                  <p className="text-[11px] font-semibold text-[#00FF94] uppercase tracking-wider mb-1">Fluxo</p>
-                  <p className="text-xs text-white/70">Cada mensagem constrói sobre a anterior. Existe uma lógica de conversa - pergunta, escuta, valida, pede permissão, explica.</p>
-                </div>
-                <div className="pt-2 border-t border-[#00FF94]/20">
-                  <p className="text-xs text-[#00FF94] font-medium">Sensação: Conversar com alguém que tem tempo pra você.</p>
-                </div>
-              </motion.div>
-            </motion.div>
-
-            {/* Human Column */}
-            <motion.div
-              className="space-y-4"
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
+            {/* Human Images */}
+            <div className="col-span-2 space-y-3">
               <div className="flex items-center gap-2 justify-center">
-                <div className="p-2 rounded-lg bg-[#00E5FF]/20">
-                  <User className="w-5 h-5 text-[#00E5FF]" />
+                <div className="p-1.5 md:p-2 rounded-lg bg-[#FF6B6B]/20">
+                  <User className="w-4 h-4 md:w-5 md:h-5 text-[#FF6B6B]" />
                 </div>
-                <h3 className="text-base font-semibold text-white">
+                <h3 className="text-sm md:text-base font-semibold text-white">
                   Atendimento Humano
                 </h3>
               </div>
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-2 gap-2 md:gap-3">
                 {humanImages.map((image, index) => (
                   <motion.button
                     key={index}
                     type="button"
-                    className="relative rounded-xl overflow-hidden border border-white/10 bg-white/5 cursor-pointer group"
+                    className="relative rounded-lg md:rounded-xl overflow-hidden border border-[#FF6B6B]/30 bg-white/5 cursor-pointer group"
                     whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
                     transition={{ duration: 0.2 }}
                     onClick={() => setSelectedImage(image)}
                   >
@@ -132,41 +96,12 @@ export default function ComparativoSlide() {
                       className="w-full h-auto"
                     />
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-center justify-center">
-                      <ZoomIn className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <ZoomIn className="w-6 h-6 md:w-8 md:h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
                     </div>
                   </motion.button>
                 ))}
               </div>
-
-              {/* Human Analysis */}
-              <motion.div
-                className="rounded-xl border border-[#FF6B6B]/20 bg-[#FF6B6B]/5 p-4 space-y-3"
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-              >
-                <div>
-                  <p className="text-[11px] font-semibold text-[#FF6B6B] uppercase tracking-wider mb-1">Tom</p>
-                  <p className="text-xs text-white/70">Animado demais, quase ansioso. Parece vendedor de loja querendo bater meta.</p>
-                </div>
-                <div>
-                  <p className="text-[11px] font-semibold text-[#FF6B6B] uppercase tracking-wider mb-1">Linguagem</p>
-                  <ul className="text-xs text-white/70 space-y-0.5">
-                    <li>• Gírias e informalidade (&quot;tá logo ali&quot;, &quot;Vai amar&quot;)</li>
-                    <li>• Emoji no meio de contexto de saúde</li>
-                    <li>• Excesso de entusiasmo (&quot;Ótimo!&quot;, &quot;💪&quot;)</li>
-                  </ul>
-                </div>
-                <div>
-                  <p className="text-[11px] font-semibold text-[#FF6B6B] uppercase tracking-wider mb-1">Fluxo</p>
-                  <p className="text-xs text-white/70">Desconexo. Cliente fala &quot;ganhar massa&quot; e atendente já pula pra vender sem explorar nada.</p>
-                </div>
-                <div className="pt-2 border-t border-[#FF6B6B]/20">
-                  <p className="text-xs text-[#FF6B6B] font-medium">Sensação: Conversar com alguém que quer terminar logo pra atender o próximo.</p>
-                </div>
-              </motion.div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </SlideShell>
@@ -175,7 +110,7 @@ export default function ComparativoSlide() {
       <AnimatePresence>
         {selectedImage && (
           <motion.div
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -183,19 +118,19 @@ export default function ComparativoSlide() {
           >
             <motion.button
               type="button"
-              className="absolute top-6 right-6 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+              className="absolute top-4 right-4 md:top-6 md:right-6 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors z-10"
               onClick={() => setSelectedImage(null)}
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.8 }}
             >
-              <X className="w-6 h-6 text-white" />
+              <X className="w-5 h-5 md:w-6 md:h-6 text-white" />
             </motion.button>
 
             <motion.img
               src={selectedImage.src}
               alt={selectedImage.alt}
-              className="max-w-[90vw] max-h-[90vh] object-contain rounded-lg shadow-2xl"
+              className="max-w-[95vw] max-h-[90vh] object-contain rounded-lg shadow-2xl"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
