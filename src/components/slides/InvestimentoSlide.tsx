@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   Bot,
@@ -12,9 +13,11 @@ import {
   Server,
   Wrench,
   Users,
+  FileText,
 } from "lucide-react";
 import SlideShell from "@/components/ui/SlideShell";
 import { mainPackage, deliverables } from "@/lib/data/proposal-data";
+import InvestmentDetailsModal from "@/components/modals/InvestmentDetailsModal";
 
 const deliverableIcons: Record<string, React.ReactNode> = {
   MessageSquareMore: <MessageSquareMore className="w-5 h-5" />,
@@ -23,6 +26,8 @@ const deliverableIcons: Record<string, React.ReactNode> = {
 };
 
 export default function InvestimentoSlide() {
+  const [isDetailsOpen, setIsDetailsOpen] = useState(false);
+
   return (
     <SlideShell
       eyebrow="Investimento"
@@ -52,9 +57,19 @@ export default function InvestimentoSlide() {
                 <p className="text-white/60 text-sm mt-1">{mainPackage.subtitle}</p>
               </div>
             </div>
-            <span className="inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold bg-[#00FF94] text-black">
-              {mainPackage.badge}
-            </span>
+            <div className="flex items-center gap-2">
+              <span className="inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold bg-[#00FF94] text-black">
+                {mainPackage.badge}
+              </span>
+              <button
+                type="button"
+                onClick={() => setIsDetailsOpen(true)}
+                className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium bg-white/10 text-white/80 hover:bg-white/20 hover:text-white border border-white/20 transition-all"
+              >
+                <FileText className="w-3.5 h-3.5" />
+                Ver Detalhes
+              </button>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
@@ -177,6 +192,12 @@ export default function InvestimentoSlide() {
           </p>
         </motion.div>
       </div>
+
+      {/* Modal de Detalhes do Investimento */}
+      <InvestmentDetailsModal
+        isOpen={isDetailsOpen}
+        onClose={() => setIsDetailsOpen(false)}
+      />
     </SlideShell>
   );
 }

@@ -414,6 +414,38 @@ export const currentOperationData = {
 };
 
 // =============================================================================
+// INVESTMENT DETAILS DATA (Detalhamento do Investimento)
+// =============================================================================
+
+export interface InvestmentItem {
+  item: string;
+  value: number;
+}
+
+export interface InvestmentDetails {
+  implementation: InvestmentItem[];
+  monthly: InvestmentItem[];
+  totalIndividual: number;
+  totalPackage: number;
+  savings: number;
+}
+
+export const investmentDetails: InvestmentDetails = {
+  implementation: [
+    { item: "Painel de Atendimento (configuração completa)", value: 8000 },
+    { item: "Agente de IA SDR (desenvolvimento + treinamento)", value: 10000 },
+    { item: "Dashboard de Gestão + CRM (desenvolvimento)", value: 12000 },
+    { item: "Automações inteligentes (desenvolvimento)", value: 5000 },
+  ],
+  monthly: [
+    { item: "Manutenção e suporte técnico", value: 1500 },
+  ],
+  totalIndividual: 35000,
+  totalPackage: 20000,
+  savings: 15000,
+};
+
+// =============================================================================
 // NEXT STEPS DATA (Próximos Passos)
 // =============================================================================
 
