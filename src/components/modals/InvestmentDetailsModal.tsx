@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { TrendingDown, Check } from "lucide-react";
 import ModalWrapper from "./ModalWrapper";
-import { investmentDetails } from "@/lib/data/proposal-data";
+import { investmentDetails, mainPackage } from "@/lib/data/proposal-data";
 
 interface InvestmentDetailsModalProps {
   isOpen: boolean;
@@ -89,49 +89,6 @@ export default function InvestmentDetailsModal({
           </div>
         </motion.div>
 
-        {/* Tabela de Recorrência */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-        >
-          <h3 className="text-xl font-semibold text-white mb-4 flex items-center gap-2">
-            <div className="w-1 h-6 bg-[#00E5FF] rounded-full" />
-            Recorrência Mensal
-          </h3>
-
-          <div className="rounded-xl border border-white/10 overflow-hidden">
-            {/* Header */}
-            <div className="grid grid-cols-[1fr_auto] bg-[#00E5FF]/10 border-b border-[#00E5FF]/30">
-              <div className="px-4 py-3 text-sm font-semibold text-[#00E5FF]">
-                Item
-              </div>
-              <div className="px-4 py-3 text-sm font-semibold text-[#00E5FF] text-right">
-                Valor/mês
-              </div>
-            </div>
-
-            {/* Rows */}
-            {investmentDetails.monthly.map((item, index) => (
-              <motion.div
-                key={item.item}
-                className="grid grid-cols-[1fr_auto] border-b border-white/5 hover:bg-white/5 transition-colors"
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.35 + index * 0.05 }}
-              >
-                <div className="px-4 py-3 text-white/80 text-sm flex items-center gap-2">
-                  <Check className="w-4 h-4 text-[#00E5FF] flex-shrink-0" />
-                  {item.item}
-                </div>
-                <div className="px-4 py-3 text-white font-medium text-sm text-right">
-                  {formatCurrency(item.value)}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
         {/* Destaque de Economia */}
         <motion.div
           className="rounded-2xl border-2 border-[#00FF94]/40 bg-gradient-to-br from-[#00FF94]/10 to-[#00E5FF]/5 p-6"
@@ -173,7 +130,7 @@ export default function InvestmentDetailsModal({
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6 }}
         >
-          Valores de implementação única. A recorrência mensal de R$ 3.000 inclui todos os custos operacionais.
+          Valores de implementação única. A recorrência mensal de {mainPackage.monthly} inclui todos os custos operacionais.
         </motion.p>
       </div>
     </ModalWrapper>

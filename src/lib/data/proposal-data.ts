@@ -129,7 +129,7 @@ export const mainPackage: Plan = {
   name: "Painel de Atendimento + Dashboard Gerencial",
   subtitle: "Controle total da operação com Agentes de IA e Automações",
   setup: "R$ 20.000,00",
-  monthly: "R$ 3.000,00",
+  monthly: "R$ 2.500,00",
   bullets: [
     "Painel de Atendimento para Vendedores",
     "Agente de IA para Atendimento 24/7",
@@ -201,9 +201,9 @@ export interface FAQItem {
 export const faqItems: FAQItem[] = [
   {
     iconName: "DollarSign",
-    question: "O que está incluso no valor mensal de R$ 3.000?",
+    question: "O que está incluso no valor mensal de R$ 2.500?",
     answer:
-      "Tudo que você precisa para operar: servidores, banco de dados, inteligência artificial (tokens de IA), manutenção, atualizações de segurança, suporte técnico e melhorias contínuas. Você não precisa se preocupar com nada técnico - cuidamos de tudo.",
+      "Tudo que você precisa para operar: servidores, banco de dados, manutenção, atualizações de segurança, suporte técnico e melhorias contínuas. Você não precisa se preocupar com nada técnico - cuidamos de tudo.",
   },
   {
     iconName: "Clock",
@@ -228,6 +228,12 @@ export const faqItems: FAQItem[] = [
     question: "O agente de IA substitui meus vendedores?",
     answer:
       "Não, ele ajuda seus vendedores. O agente faz o trabalho inicial de qualificação - atende, coleta informações, identifica se o lead é bom - e só então passa para o vendedor humano. Seus vendedores focam em vender, não em responder perguntas básicas.",
+  },
+  {
+    iconName: "DollarSign",
+    question: "Os custos da API oficial do WhatsApp estão inclusos?",
+    answer:
+      "Não, os custos da API oficial do WhatsApp (Meta) são cobrados separadamente e pagos diretamente à Meta. O valor varia conforme o volume de conversas e tipo de mensagem. Podemos ajudar a estimar esse custo com base no seu volume atual.",
   },
 ];
 
@@ -424,7 +430,6 @@ export interface InvestmentItem {
 
 export interface InvestmentDetails {
   implementation: InvestmentItem[];
-  monthly: InvestmentItem[];
   totalIndividual: number;
   totalPackage: number;
   savings: number;
@@ -436,9 +441,6 @@ export const investmentDetails: InvestmentDetails = {
     { item: "Agente de IA SDR (desenvolvimento + treinamento)", value: 10000 },
     { item: "Dashboard de Gestão + CRM (desenvolvimento)", value: 12000 },
     { item: "Automações inteligentes (desenvolvimento)", value: 5000 },
-  ],
-  monthly: [
-    { item: "Manutenção e suporte técnico", value: 1500 },
   ],
   totalIndividual: 35000,
   totalPackage: 20000,
