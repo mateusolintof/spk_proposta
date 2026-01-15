@@ -3,9 +3,9 @@ import { Providers } from "./providers";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Proposta Comercial | Mercante Distribuidora | Convert.AI",
+  title: "Proposta Comercial | SPK Distribuidora | Convert.AI",
   description:
-    "Orquestração inteligente de atendimento comercial para Mercante Distribuidora: fila inteligente, agentes especializados por jornada, governança WhatsApp e dashboard executivo.",
+    "Solução completa de controle comercial para SPK Distribuidora de Autopeças: central de atendimento, assistente IA 24/7, automações inteligentes e painel do gestor.",
   icons: { icon: "/favicon.ico" },
 };
 

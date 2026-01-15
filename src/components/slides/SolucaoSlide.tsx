@@ -3,48 +3,57 @@
 import { motion } from "framer-motion";
 import {
   MessageSquareMore,
-  ShoppingCart,
-  Calendar,
-  Receipt,
+  Bot,
+  Cpu,
+  LayoutDashboard,
   BrainCircuit,
 } from "lucide-react";
 import SlideShell from "@/components/ui/SlideShell";
-import type { ModalKind, AgentType } from "@/types/modal";
+import type { ModalKind, PilarType } from "@/types/modal";
 
 const ORBIT_RADIUS = "clamp(130px, 20vw, 210px)";
-const AGENT_ANGLES = [0, 90, 180, 270]; // 4 agentes em 360°
+const PILAR_ANGLES = [0, 90, 180, 270]; // 4 pilares em 360°
 
-const agents: { id: AgentType; name: string; icon: React.ReactNode; color: string }[] = [
+const pilares: { id: PilarType; name: string; icon: React.ReactNode; color: string }[] = [
   {
-    id: "omnichannel",
-    name: "Solução Omnichannel",
+    id: "atendimento",
+    name: "Central de Atendimento",
     icon: <MessageSquareMore className="w-5 h-5" />,
     color: "#00E5FF",
   },
   {
-    id: "vendas",
-    name: "Agente de Vendas",
-    icon: <ShoppingCart className="w-5 h-5" />,
+    id: "agente",
+    name: "Assistente 24/7",
+    icon: <Bot className="w-5 h-5" />,
     color: "#00FF94",
   },
   {
-    id: "evento",
-    name: "Agente de Eventos",
-    icon: <Calendar className="w-5 h-5" />,
+    id: "automacoes",
+    name: "O Espião Inteligente",
+    icon: <Cpu className="w-5 h-5" />,
     color: "#FFD700",
   },
   {
-    id: "cobranca",
-    name: "Agente de Cobrança",
-    icon: <Receipt className="w-5 h-5" />,
+    id: "dashboard",
+    name: "Painel do Gestor",
+    icon: <LayoutDashboard className="w-5 h-5" />,
     color: "#FF6B6B",
   },
 ];
 
 const features = [
-  { title: "API Oficial Meta", desc: "WhatsApp Business API com inbox unificado, roteamento de números e histórico centralizado" },
-  { title: "Integração ERP", desc: "Agente de Vendas com acesso a preços, estoque e criação de ordens de venda automatizada" },
-  { title: "Governança WhatsApp", desc: "Controle de limites, opt-out respeitado e múltiplos canais para proteger seu número" },
+  {
+    title: "Tudo em Um Só Lugar",
+    desc: "Todas as conversas centralizadas, histórico completo do cliente e distribuição automática de leads entre vendedores."
+  },
+  {
+    title: "Atendimento que Nunca Para",
+    desc: "Agente de IA qualifica seus 300 leads mensais automaticamente, 24 horas por dia, inclusive fins de semana."
+  },
+  {
+    title: "Dados sem Esforço",
+    desc: "Sistema captura informações automaticamente das conversas. CRM sempre atualizado sem depender do vendedor."
+  },
 ];
 
 interface SolucaoSlideProps {
@@ -54,10 +63,10 @@ interface SolucaoSlideProps {
 export default function SolucaoSlide({ onOpenModal }: SolucaoSlideProps) {
   return (
     <SlideShell
-      eyebrow="Solução"
+      eyebrow="A Solução"
       eyebrowColor="success"
-      title="Arquitetura da Solução"
-      subtitle="4 Soluções Integradas para Transformar sua Operação"
+      title="4 Pilares que Trabalham Juntos por Você"
+      subtitle="Um ecossistema integrado que transforma sua operação comercial"
       align="center"
       size="compact"
       background={
@@ -79,13 +88,13 @@ export default function SolucaoSlide({ onOpenModal }: SolucaoSlideProps) {
           <div className="absolute inset-0 border border-white/5 rounded-full motion-reduce:animate-none animate-[spin_30s_linear_infinite]" />
           <div className="absolute inset-12 border border-dashed border-white/10 rounded-full motion-reduce:animate-none animate-[spin_20s_linear_infinite_reverse]" />
 
-          {/* Agents (orbiting) */}
+          {/* Pilares (orbiting) */}
           <div className="absolute inset-0 motion-reduce:animate-none animate-[spin_50s_linear_infinite]">
-            {agents.map((agent, index) => {
-              const angle = AGENT_ANGLES[index] ?? 0;
+            {pilares.map((pilar, index) => {
+              const angle = PILAR_ANGLES[index] ?? 0;
               return (
                 <div
-                  key={agent.id}
+                  key={pilar.id}
                   className="absolute top-1/2 left-1/2"
                   style={{
                     transform: `translate(-50%, -50%) rotate(${angle}deg) translateX(${ORBIT_RADIUS})`,
@@ -95,10 +104,10 @@ export default function SolucaoSlide({ onOpenModal }: SolucaoSlideProps) {
                     <div className="motion-reduce:animate-none animate-[spin_50s_linear_infinite_reverse]">
                       <motion.button
                         type="button"
-                        onClick={() => onOpenModal?.({ type: "agent", agent: agent.id })}
+                        onClick={() => onOpenModal?.({ type: "pilar", pilar: pilar.id })}
                         className="relative w-12 h-12 rounded-full bg-black/60 border border-white/20 transition-all flex items-center justify-center backdrop-blur-md group cursor-pointer"
                         style={{
-                          borderColor: `${agent.color}40`,
+                          borderColor: `${pilar.color}40`,
                         }}
                         initial={{ opacity: 0, scale: 0 }}
                         whileInView={{ opacity: 1, scale: 1 }}
@@ -106,24 +115,24 @@ export default function SolucaoSlide({ onOpenModal }: SolucaoSlideProps) {
                         transition={{ delay: 0.2 + index * 0.08 }}
                         whileHover={{
                           scale: 1.15,
-                          boxShadow: `0 0 20px ${agent.color}60`,
-                          borderColor: agent.color,
+                          boxShadow: `0 0 20px ${pilar.color}60`,
+                          borderColor: pilar.color,
                         }}
                         whileTap={{ scale: 0.95 }}
                       >
                         {/* Pulse ring */}
                         <span
                           className="absolute inset-0 rounded-full border animate-ping opacity-30"
-                          style={{ borderColor: `${agent.color}50` }}
+                          style={{ borderColor: `${pilar.color}50` }}
                         />
                         <div
                           className="transition-colors"
-                          style={{ color: agent.color }}
+                          style={{ color: pilar.color }}
                         >
-                          {agent.icon}
+                          {pilar.icon}
                         </div>
                         <span className="absolute -bottom-9 text-[10px] font-medium text-white/60 group-hover:text-white whitespace-nowrap text-center leading-tight transition-colors">
-                          {agent.name}
+                          {pilar.name}
                         </span>
                       </motion.button>
                     </div>
@@ -154,6 +163,16 @@ export default function SolucaoSlide({ onOpenModal }: SolucaoSlideProps) {
             </motion.div>
           ))}
 
+          {/* CTA */}
+          <motion.p
+            className="text-xs text-white/40 text-center pt-2"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.6 }}
+          >
+            Clique nos ícones para ver detalhes de cada pilar
+          </motion.p>
         </div>
       </div>
     </SlideShell>
