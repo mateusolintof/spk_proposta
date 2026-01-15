@@ -48,7 +48,7 @@ export default function IntroSlide({ onEnter }: IntroSlideProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.8 }}
         >
-          Sua Equipe Vendendo Mais, Você no Controle Total
+          Painel de Atendimento + Dashboard Gerencial
         </motion.h1>
 
         {/* Subtitle */}
@@ -58,9 +58,8 @@ export default function IntroSlide({ onEnter }: IntroSlideProps) {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.7 }}
         >
-          Transformamos sua operação comercial em uma máquina de resultados previsíveis.
-          Seus 300 leads mensais atendidos automaticamente, vendedores focados em vender,
-          e você com visibilidade total de tudo que acontece.
+          Controle total da sua operação com Agentes de IA e Automações.
+          Atendimento inteligente para vendedores e CRM que se alimenta sozinho.
         </motion.p>
 
         {/* Tagline */}
